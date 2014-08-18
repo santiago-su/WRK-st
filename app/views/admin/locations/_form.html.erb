@@ -1,0 +1,33 @@
+<% if f.object.errors.any? %>
+<div id="error_explanation">
+  <% f.object.errors.full_messages %>
+  <div class="alert alert-danger">
+    <p class="alert-link"></p>
+  </div>
+</div>
+<% end %>
+
+
+<div class="form-group">
+  <%= f.label :name, "Nombre", class: "col-sm-2 control-label" %>
+  <div class="col-sm-4">
+    <%= f.text_field :name, class: "form-control"  %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :description, "Descripción", class: "col-sm-2 control-label" %>
+  <div class="col-sm-4">
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-4">
+    <% if f.object.new_record? %>
+    <%= f.submit "Crear", class: "btn btn-primary" %>
+    <% else %>
+    <%= f.submit "Guardar cambios", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
