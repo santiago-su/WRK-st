@@ -1,15 +1,20 @@
 <h1>Ingresos y Egresos</h1>
 
-<%= button_to "Ingreso", new_admin_transaction_path, method: :get, class: "btn btn-primary" %>
-<%= button_to "Egreso", new_admin_transaction_path, method: :get, class: "btn btn-primary" %>
 
+<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">
+  Nuevo
+</button>
+
+<div id="demo" class="collapse"><%= render partial: "form", locals: { admin: @transaction }%></div>
+<h2>Movimientos</h2>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Monto</th>
+      <th>Concepto</th>
       <th>Comentario</th>
       <th>Fecha</th>
+      <th>Cantidad</th>
       <th>Ingreso</th>
       <th>Egreso</th>
     </tr>
@@ -17,14 +22,14 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.amount %></td>
+        <td><%= transaction.concept %></td>
         <td><%= transaction.commentary %></td>
         <td><%= transaction.date %></td>
+        <td><%= transaction.amount %></td>
         <td><%= transaction.ingreso(transaction) %></td>
         <td><%= transaction.egreso(transaction) %></td>
         <td></td>
-        <td><%= link_to "Editar", edit_admin_transaction_path(transaction) %></td>
-        <td><%= link_to "Borrar", admin_transaction_path(transaction), method: :delete %></td>
+        <td id="edit"><%= link_to "Editar", edit_admin_transaction_path(transaction) %></td>
       </tr>
     <% end %>
   </tbody>

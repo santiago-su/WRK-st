@@ -3,6 +3,7 @@ before_action :authenticate_admin!
 
   def index
     @transactions = Transaction.all
+    @transaction = Transaction.new
   end
 
   def new
@@ -15,17 +16,17 @@ before_action :authenticate_admin!
     if @transaction.save
       redirect_to admin_transactions_path, notice: "Transacción creada"
     else
-      render :new
+      redirect_to admin_transactions_path, alert: "Debe contener concepto, fecha, cantidad y tipo de transacción"
     end
   end
 
   def edit
     @transaction = Transaction.find(params[:id])
+
   end
 
   def update
     @transaction = Transaction.find(params[:id])
-
     if @transaction.update(transaction_params)
       redirect_to admin_transactions_path, notice: "Monto actualizado"
     else
