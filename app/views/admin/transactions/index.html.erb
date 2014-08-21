@@ -29,7 +29,7 @@
         <td><%= transaction.amount %></td>
         <td><%= transaction.ingreso(transaction) %></td>
         <td><%= transaction.egreso(transaction) %></td>
-        <td id="edit"><%= link_to "Editar", edit_admin_transaction_path(transaction), remote: true %></td>
+        <td><%= link_to "Editar", edit_admin_transaction_path(transaction) %></td>
       </tr>
     <% end %>
   </tbody>
