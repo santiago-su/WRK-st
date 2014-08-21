@@ -1,4 +1,4 @@
-<%= form_for [:admin, @transaction],  html: { class: "form-inline", role: "form" } do |f| %>
+<%= form_for [:admin, @transaction],  html: { class: "form-horizontal", role: "form" } do |f| %>
 
 <% if f.object.errors.any? %>
 <div id="error_explanation">
@@ -8,6 +8,22 @@
   </div>
 </div>
 <% end %>
+<div class="row">
+  <div class="col-xs-3">
+    <%= f.label :type_of_transaction_1, "Ingreso", class:  "control-label" %>
+    <%= f.radio_button(:type_of_transaction, value=1, class: "radio-inline") %>
+    <%= f.label :type_of_transaction_2, "Egreso", class: "control-label" %>
+    <%= f.radio_button(:type_of_transaction, value=2, class: "radio-inline") %>
+  </div>
+  <div class="col-xs-5">
+    <%= f.label :amount, "Cantidad", class: "control-label" %>
+    <%= f.number_field :amount, class: "form-control" %>
+  </div>
+  <div class="col-xs-4">
+    <%= f.label :date, "Fecha", class: "control-label" %>
+    <%= f.date_field :date, class: "form-control" %>
+  </div>
+</div>
 
 <div class="form-group">
   <%= f.label :concept, "Concepto", class: "control-label" %>
@@ -16,31 +32,15 @@
 
 <div class="form-group">
   <%= f.label :commentary, "Comentario", class: "control-label" %>
-    <%= f.text_field :commentary, class: "form-control"  %>
+  <%= f.text_area :commentary, class: "form-control"  %>
 </div>
 
-<div class="form-group">
-  <%= f.label :amount, "Cantidad", class: "control-label" %>
-    <%= f.number_field :amount, class: "form-control" %>
-</div>
 
 <div class="form-group">
-  <%= f.label :date, "Fecha", class: "control-label" %>
-    <%= f.date_field :date, class: "form-control" %>
-</div>
-
-<div class="form-group">
-  <%= f.label :type_of_transaction_1, "Ingreso", class:  "control-label" %>
-    <%= f.radio_button(:type_of_transaction, value=1, class: "radio-inline") %>
-</div>
-<div class="form-group">
-  <%= f.label :type_of_transaction_2, "Egreso", class: "control-label" %>
-    <%= f.radio_button(:type_of_transaction, value=2, class: "radio-inline") %>
-</div>
-
-<div class="form-group">
-  <div class="col-sm-offset-1 col-sm-4">
+  <div class="col-sm-offset-10 col-sm-0">
     <%= f.submit "Guardar", class: "btn btn-primary" %>
+    ó
+    <%= link_to "cancelar" %>
   </div>
 </div>
 <% end %>
