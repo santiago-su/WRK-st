@@ -10,7 +10,7 @@
 </div>
 
 <h2>Movimientos</h2>
-<p>Mi saldo es $<%= @transaction.balance %></p>
+<p>Mi saldo es <%= number_to_currency(@transaction.balance) %></p>
 
 <table class="table table-hover">
   <thead>
@@ -19,8 +19,6 @@
       <th>Comentario</th>
       <th>Fecha</th>
       <th>Cantidad</th>
-      <th>Ingreso</th>
-      <th>Egreso</th>
     </tr>
   </thead>
   <tbody>
@@ -29,9 +27,11 @@
         <td><%= transaction.concept %></td>
         <td><%= transaction.commentary %></td>
         <td><%= transaction.date %></td>
-        <td><%= transaction.amount %></td>
-        <td><%= transaction.ingreso(transaction) %></td>
-        <td><%= transaction.egreso(transaction) %></td>
+        <% if transaction.type_of_transaction == "1" %>
+          <td><%= number_to_currency(transaction.amount) %></td>
+        <% else %>
+          <td>-<%= number_to_currency(transaction.amount) %></td>
+        <% end %>
         <td><%= link_to "Editar", edit_admin_transaction_path(transaction) %></td>
       </tr>
     <% end %>
