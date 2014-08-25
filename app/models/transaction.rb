@@ -13,12 +13,15 @@ class Transaction < ActiveRecord::Base
     end
   end
 
-  def balance(transactions)
+  def balance
     total = 0
-    ingr = @transactions.select { |r| r.type_of_transaction == "1"}
-    egre = @transactions.select { |g| g.type_of_transaction == "2"}
-    total = ingr.amount - egr.amount
-    total
+    x = 0
+    y = 0
+    ingr = Transaction.where(type_of_transaction: "1")
+    egre = Transaction.where(type_of_transaction: "2")
+    ingr.each { |a| x += a.amount }
+    egre.each { |b| y += b.amount }
+    total = x - y
   end
 
 end

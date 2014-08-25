@@ -28,7 +28,7 @@ before_action :authenticate_admin!
   def update
     @transaction = Transaction.find(params[:id])
     if @transaction.update(transaction_params)
-      redirect_to admin_transactions_path, notice: "Monto actualizado"
+      redirect_to admin_transactions_path, notice: "Movimiento actualizado"
     else
       render :edit
     end

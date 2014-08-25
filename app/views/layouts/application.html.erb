@@ -36,13 +36,21 @@
         </div>
       </div>
     </nav>
+    <div id="columns">
+      <div id="side">
+        <ul>
+          <h3>Balance</h3>
+          <p>Mi saldo es <%= @transaction.balance %></p>
+        </ul>
+      </div>
+
     <% if notice %>
       <div class="alert alert-success"><%= notice %></div>
     <% end %>
     <% if alert %>
       <div class="alert alert-danger"><%= alert %></div>
     <% end %>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <%= yield %>
     </div>
   </div>
