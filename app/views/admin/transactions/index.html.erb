@@ -1,13 +1,16 @@
-<h1>Ingresos y Egresos</h1>
+<h1>Ingresos y Egresos
+  <button type="button" onclick = "this.style.visibility='hidden', loading.style.visibility='visible'"
+  class="btn btn-primary" data-toggle="collapse" data-target="#demo">
+    Nuevo movimiento
+  </button>
+</h1>
 
+<div id="demo" class="collapse well">
+  <%= render partial: "form", locals: { admin: @transaction }%>
+</div>
 
-<button type="button" onclick = "this.style.visibility='hidden', loading.style.visibility='visible'"
- class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#demo">
-  Nuevo movimiento
-</button>
-
-<div id="demo" class="collapse well"><%= render partial: "form", locals: { admin: @transaction }%></div>
 <h2>Movimientos</h2>
+<%= @transaction.balance %>
 
 <table class="table table-hover">
   <thead>
