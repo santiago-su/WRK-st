@@ -12,28 +12,33 @@ class Admin::LocationsController < ApplicationController
   def create
     @location = Location.new location_params
 
-    if @location.save
-      format.html { redirect_to @location, notice: 'Espacio creado.' }
-      format.json { render action: 'show', status: :created, location: @location }
-      format.js   { render action: 'show', status: :created, location: @location }
-    else
-      format.html { render action: 'new' }
-      format.json { render json: @location.errors, status: :unprocessable_entity }
-      format.js   { render json: @location.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if @location.save
+        format.html { redirect_to @location, notice: 'Espacio creado.' }
+        format.js
+      else
+        format.html { render action: 'new' }
+        format.js   { render json: @location.errors, status: :unprocessable_entity }
+      end
     end
+  end
+
+  def show
+    @location = Location.find(params[:id])
   end
 
   def edit
     @location = Location.find(params[:id])
+    @locations = Location.all
   end
 
   def update
     @location = Location.find(params[:id])
-
-    if @location.update(location_params)
-      redirect_to admin_locations_path, notice: "Espacio actualizado"
-    else
-      render :edit
+    respond_to do |format|
+      if @location.update(location_params)
+        flash[:notice] = "Espacio actualizado"
+        format.js
+      end
     end
   end
 

@@ -1,0 +1,12 @@
+<%= form_for [:admin, @location], html: { class: "form-inline", role: "form" }, remote: true do |f| %>
+<table class="table table-hover">
+  <% @locations.each do |location| %>
+  <tr>
+    <% if location == @location %>
+      <%= render partial: "row_form", locals: { f: f }%>
+    <% else %>
+      <%= render partial: "table_row", locals: { location: location } %>
+    <% end %>
+  <% end %>
+</tr>
+<% end %>

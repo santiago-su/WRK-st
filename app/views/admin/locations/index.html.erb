@@ -1,6 +1,10 @@
-<h1>Espacios</h1>
+<h1>Espacios
+<%= link_to '#new_location_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
+  <span class="glyphicon glyphicon-plus"></span> Nuevo Espacio
+<% end %>
+</h1>
 
-<table class='table' id='location_table'>
+<table class='table'>
   <thead>
     <tr>
       <th>Nombre</th>
@@ -11,18 +15,16 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id='location_table'>
     <% @locations.each do |location| %>
       <%= render partial: 'table_row', locals: {location: location} %>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'Nuevo espacio', '#new_location_modal', 'data-toggle' => 'modal' %>
-
-<div class="modal fade" id="new_location_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="new_location_modal" tabindex="-1" role="dialog"
+ aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -32,9 +34,7 @@
       <div class="modal-body">
         <%= render 'form', modal: true %>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
+
     </div>
   </div>
 </div>

@@ -1,18 +1,15 @@
-<h1>Ingresos y Egresos
-  <button type="button" onclick = "this.style.visibility='hidden', loading.style.visibility='visible'"
+<h2>Movimientos
+  <button type="button" onclick = "this.style.visibility='hidden'"
   class="btn btn-primary" data-toggle="collapse" data-target="#demo">
-    Nuevo movimiento
+    <span class="glyphicon glyphicon-plus"></span>  Nuevo movimiento
   </button>
-</h1>
+</h2>
 
 <div id="demo" class="collapse well">
   <%= render partial: "form", locals: { admin: @transaction }%>
 </div>
 
-<h2>Movimientos</h2>
-<p>Mi saldo es <%= number_to_currency(@transaction.balance) %></p>
-
-<table class="table table-hover">
+<table class="table table-hover" id="transaction_table">
   <thead>
     <tr>
       <th>Concepto</th>
@@ -24,15 +21,7 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.concept %></td>
-        <td><%= transaction.commentary %></td>
-        <td><%= transaction.date %></td>
-        <% if transaction.type_of_transaction == "1" %>
-          <td><%= number_to_currency(transaction.amount) %></td>
-        <% else %>
-          <td>-<%= number_to_currency(transaction.amount) %></td>
-        <% end %>
-        <td><%= link_to "Editar", edit_admin_transaction_path(transaction) %></td>
+        <%= render partial: 'row', locals: { transaction: transaction } %>
       </tr>
     <% end %>
   </tbody>

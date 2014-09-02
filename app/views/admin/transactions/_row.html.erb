@@ -1,0 +1,13 @@
+<td><%= transaction.concept %></td>
+<td><%= transaction.commentary %></td>
+<td><%= transaction.date %></td>
+<% if transaction.type_of_transaction == "1" %>
+  <td><%= number_to_currency(transaction.amount) %></td>
+<% else %>
+  <td>-<%= number_to_currency(transaction.amount) %></td>
+<% end %>
+<td>
+  <%= link_to edit_admin_transaction_path(transaction), class: "btn btn-default btn-xs" do %>
+    <span class="glyphicon glyphicon-pencil"></span>  Editar
+  <% end %>
+</td>
