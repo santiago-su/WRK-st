@@ -7,9 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
 
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -21,10 +20,10 @@
           </button>
           <a class="navbar-brand" href="/">WRK</a>
         </div>
-
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
               <% if current_admin %>
+                <li><%= link_to "Clientes", admin_clients_path %></li>
                 <li><%= link_to "Ingresos y egresos", admin_transactions_path %></li>
                 <li><%= link_to "Espacios", admin_locations_path %></li>
                 <li><%= link_to "Cambiar contraseña", edit_admin_registration_path %></li>
@@ -36,11 +35,8 @@
         </div>
       </div>
     </nav>
-    <div id="columns">
-      <div id="side">
-        <ul>
-          <h3>Sidebar</h3>
-      </div>
+  <div class="container">
+
 
     <% if notice %>
       <div class="alert alert-success"><%= notice %></div>
@@ -50,6 +46,10 @@
     <% end %>
     <div class="col-md-9">
       <%= yield %>
+    </div>
+    <div class="col-md-3">
+      <h1>Sidebar</h1>
+      <%= render partial: "sidebar/balance", locals: { transaction: @transaction } %>
     </div>
   </div>
 

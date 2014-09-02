@@ -1,0 +1,67 @@
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+<%= form_for([:admin, @client], remote: true, html: {role: :form, 'data-model' => 'client'}) do |f| %>
+
+<% if f.object.errors.any? %>
+<div id="error_explanation">
+  <% f.object.errors.full_messages %>
+  <div class="alert alert-danger">
+    <p class="alert-link">Debe tener nombre, oficina, horas disponibles en la sala de juntas y fecha de ingreso</p>
+  </div>
+</div>
+<% end %>
+
+<div class="form-group">
+  <%= f.label :name, "Nombre", class: "col-sm-2 control-label" %>
+  <%= f.text_field :name, class: "form-control"  %>
+  <span class="help-block"></span>
+</div>
+
+<div class="form-group">
+  <%= f.label :responsible, "Responsable", class: "col-sm-2 control-label" %>
+  <%= f.text_field :responsible, class: "form-control" %>
+  <span class="help-block"></span>
+</div>
+
+<div class="form-group">
+  <%= f.label :email, "Correo electrónico", class: "col-sm-2 control-label" %>
+  <%= f.email_field :email, class: "form-control" %>
+  <span class="help-block"></span>
+</div>
+
+<div class="form-group">
+  <%= f.label :phone, "Teléfono", class: "col-sm-2 control-label" %>
+  <%= f.number_field :phone, class: "form-control" %>
+  <span class="help-block"></span>
+</div>
+
+<div class="form-group">
+  <%= f.label :description, "Descripción", class: "col-sm-2 control-label" %>
+  <%= f.text_area :description, class: "form-control" %>
+  <span class="help-block"></span>
+</div>
+
+<div class="form-group">
+  <%= f.label :meeting_office_hours, "Horas sala de juntas", class: "col-sm-2 control-label" %>
+  <%= f.number_field :meeting_office_hours, class: "form-control" %>
+  <span class="help-block"></span>
+</div>
+
+<div class="form-group">
+  <%= f.label :location, "Oficina", class: "col-sm-2 control-label" %>
+  <%= f.text_field :location, class: "form-control" %>
+  <span class="help-block"></span>
+</div>
+
+<div class="form-group">
+  <%= f.label :entry_date, "Fecha de ingreso", class: "col-sm-2 control-label" %>
+  <%= f.date_field :entry_date, class: "form-control" %>
+  <span class="help-block"></span>
+</div>
+
+
+  <div class="actions">
+    <button type="submit" class="btn btn-default" id="modal_win">
+      <span class="glyphicon glyphicon-ok"></span> Guardar
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+
+<h1>Cliente #<%= @client.id %></h1>
+
+<div class="well col-xs-10 col-sm-10" id="tac">
+
+  <dl id="tabb">
+      <dt>Nombre</dt>
+      <dd><%= @client.name %></dd>
+      <dt>Responsable</dt>
+      <dd><%= @client.responsible %></dd>
+      <dt>Correo electrónico</dt>
+      <dd><%= @client.email %></dd>
+      <dt>Teléfono</dt>
+      <dd><%= @client.phone %></dd>
+      <dt>Descripción</dt>
+      <dd><%= @client.description %></dd>
+      <dt>Horas disponibles de Sala de Juntas</dt>
+      <dd><%= @client.meeting_office_hours %></dd>
+      <dt>Espacio</dt>
+      <dd><%= @client.location %></dd>
+      <dt>Fecha de Ingreso</dt>
+      <dd><%= @client.entry_date %></dd>
+  </dl>
+  <%= link_to edit_admin_client_path(@client), class: "btn btn-default btn-xs", remote: true do %>
+    <span class="glyphicon glyphicon-pencil"></span>  Editar
+  <% end %>
+  <%= link_to admin_client_path(@client), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } do %>
+    <span class="glyphicon glyphicon-trash"></span>  Eliminar
+  <% end %>
+  <%= link_to "Atrás", admin_clients_path %>
+</div>

@@ -14,33 +14,5 @@
  *= require_self
  */
 
+ @import "bootstrap-sprockets";
  @import "bootstrap";
-
-
-#columns {
-  background: white;
-
-  #main {
-    margin-right: 17em;
-    padding: 1em;
-    background: white;
-  }
-
-  #side {
-    float: right;
-    padding: 1em 2em;
-    width: 20em;
-    background: white;
-
-    ul {
-      padding: 0;
-      li {
-        list-style: none;
-        a {
-          color: black;
-          font-size: medium;
-        }
-      }
-    }
-  }
-}
