@@ -1,12 +1,55 @@
-$(document).ready(function(){
+$(document).ready(function() {
+    $('form#new_client').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            'client[name]': {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'No puede estar vacío'
+                    },
+                }
+            },
+            'client[meeting_office_hours]': {
+                message: 'Debe ser un valor numérico',
+                validators: {
+                    notEmpty: {
+                        message: 'No puede estar vacío'
+                      }
+                    }
+                  },
+              'client[location]': {
+                  message: 'The username is not valid',
+                  validators: {
+                      notEmpty: {
+                          message: 'No puede estar vacío'
+                        }
+                      }
+                    },
+              'client[entry_date]': {
+                  message: 'The username is not valid',
+                  validators: {
+                      notEmpty: {
+                          message: 'No puede estar vacío'
+                        }
+                      }
+                    }
 
-  $(document).bind('ajaxError', 'form#new_client', function(event, jqxhr, settings, exception){
+        }
+    });
 
-    // note: jqxhr.responseJSON undefined, parsing responseText instead
-    $(event.data).render_form_errors( $.parseJSON(jqxhr.responseText) );
-
-  });
-
+$('form#new_client').on('success.form.bv', function(e) {
+        // Called when the form is valid
+        var $form = $(e.target);
+        if ($form.data('remote') && $.rails !== undefined) {
+            e.preventDefault();
+        }
+    });
 });
 
 (function($) {
@@ -14,26 +57,63 @@ $(document).ready(function(){
   $.fn.modal_win = function(){
     this.modal('hide');
     this.find('form input').val('');
-    this.clear_previous_errors();
   };
-
-  $.fn.render_form_errors = function(errors){
-    $form = this;
-    this.clear_previous_errors();
-    model = this.data('model');
-    // show error messages in input form-group help-block
-    $.each(errors, function(field, messages){
-      $input = $('input[name="' + model + '[' + field + ']"]');
-      $input.closest('.form-group').addClass('has-error').find('.help-block').html( messages.join(' & ') );
-    });
-
-  };
-
-  $.fn.clear_previous_errors = function(){
-    $('.form-group.has-error', this).each(function(){
-      $('.help-block', $(this)).html('');
-      $(this).removeClass('has-error');
-    });
-  }
 
 }(jQuery));
+
+$(document).ready(function(){
+
+  $(document).bind('ajaxSend', '#editt_form', function(event, jqxhr, settings, exception){
+    $('#editt_form').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            'client[name]': {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'No puede estar vacío'
+                    },
+                }
+            },
+            'client[meeting_office_hours]': {
+                message: 'Debe ser un valor numérico',
+                validators: {
+                    notEmpty: {
+                        message: 'No puede estar vacío'
+                      }
+                    }
+                  },
+              'client[location]': {
+                  message: 'The username is not valid',
+                  validators: {
+                      notEmpty: {
+                          message: 'No puede estar vacío'
+                        }
+                      }
+                    },
+              'client[entry_date]': {
+                  message: 'The username is not valid',
+                  validators: {
+                      notEmpty: {
+                          message: 'No puede estar vacío'
+                        }
+                      }
+                    }
+
+        }
+    });
+
+$('editt_form').on('success.form.bv', function(e) {
+        // Called when the form is valid
+        var $form = $(e.target);
+        if ($form.data('remote') && $.rails !== undefined) {
+            e.preventDefault();
+        }
+    });
+  });
+});

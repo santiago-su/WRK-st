@@ -15,7 +15,7 @@ class Admin::ClientsController < ApplicationController
       if @client.save
         format.js
       else
-        format.js   { render json: @client.errors, status: :unprocessable_entity }
+        format.js { render json: @client.errors, status: :unprocessable_entity }
       end
     end
   end

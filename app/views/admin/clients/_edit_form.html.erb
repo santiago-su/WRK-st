@@ -1,6 +1,4 @@
-<% modal ||= false %>
-<% remote = modal ? true : false %>
-<%= form_for([:admin, @client], remote: true, html: {role: :form, 'data-model' => 'client'}) do |f| %>
+<%= form_for([:admin, @client], remote: true, html: {role: :form, id: "editt_form"}) do |f| %>
 
 <% if f.object.errors.any? %>
 <div id="error_explanation">
@@ -54,13 +52,13 @@
 
 <div class="form-group">
   <%= f.label :entry_date, "Fecha de ingreso" %>
-  <%= f.date_field :entry_date, value: Time.now.strftime('%Y-%m-%d'), class: "form-control" %>
+  <%= f.date_field :entry_date, value: @client.entry_date, class: "form-control" %>
   <span class="help-block"></span>
 </div>
 
 
   <div class="actions">
-    <button type="submit" class="btn btn-default" id="modal_win">
+    <button type="submit" class="btn btn-default">
       <span class="glyphicon glyphicon-ok"></span> Guardar
   </div>
 <% end %>

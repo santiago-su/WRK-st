@@ -1,3 +1,4 @@
+<tr>
 <td><%= transaction.concept %></td>
 <td><%= transaction.commentary %></td>
 <td><%= transaction.date %></td>
@@ -7,7 +8,8 @@
   <td>-<%= number_to_currency(transaction.amount) %></td>
 <% end %>
 <td>
-  <%= link_to edit_admin_transaction_path(transaction), class: "btn btn-default btn-xs" do %>
+  <%= link_to edit_admin_transaction_path(transaction), remote: true, class: "btn btn-default btn-xs" do %>
     <span class="glyphicon glyphicon-pencil"></span>  Editar
   <% end %>
 </td>
+</tr>

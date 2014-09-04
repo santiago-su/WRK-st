@@ -1,2 +1,2 @@
-var tr = $("<tr></tr>").append("<%= j (render partial: 'row', locals: { transaction: @transaction }) %>");;
-$("#transaction_table tbody").append(tr);
+$("#transaction_table").append("<%= j (render partial: 'row', locals: { transaction: @transaction }) %>");
+$("#demo").hide();

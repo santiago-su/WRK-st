@@ -1,6 +1,6 @@
 <h2>Movimientos
   <button type="button" onclick = "this.style.visibility='hidden'"
-  class="btn btn-primary" data-toggle="collapse" data-target="#demo">
+  class="btn btn-primary" data-toggle="collapse" data-target="#demo" id="new_transaction_button">
     <span class="glyphicon glyphicon-plus"></span>  Nuevo movimiento
   </button>
 </h2>
@@ -9,7 +9,7 @@
   <%= render partial: "form", locals: { admin: @transaction }%>
 </div>
 
-<table class="table table-hover" id="transaction_table">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Concepto</th>
@@ -18,11 +18,9 @@
       <th>Cantidad</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="transaction_table">
     <% @transactions.each do |transaction| %>
-      <tr>
-        <%= render partial: 'row', locals: { transaction: transaction } %>
-      </tr>
+      <%= render partial: 'row', locals: { transaction: transaction } %>
     <% end %>
   </tbody>
 </table>

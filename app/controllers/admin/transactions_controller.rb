@@ -2,7 +2,7 @@ class Admin::TransactionsController < ApplicationController
 before_action :authenticate_admin!
 
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.all.sort_by(&:date)
     @transaction = Transaction.new
   end
 
@@ -14,6 +14,7 @@ before_action :authenticate_admin!
     @transaction = Transaction.new transaction_params
     respond_to do |format|
       if @transaction.save
+        flash[:notice] = "Transacción creada"
         format.html { redirect_to admin_transactions_path, notice: "Su transacción ha sido guardada" }
         format.js
       else
