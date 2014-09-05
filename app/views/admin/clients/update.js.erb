@@ -1,1 +1,2 @@
-window.location = "/admin/clients/"
+$("#tac").html("<%= j (render partial: 'show', locals: { client: @client}) %>");
+alert("Cliente actualizado");

@@ -35,7 +35,7 @@ class Admin::ClientsController < ApplicationController
     @client = Client.find(params[:id])
     respond_to do |format|
     if @client.update(client_params)
-      flash[:notice] = "Cliente actualizado"
+      
       format.js
     else
       format.js { render json: @client.errors, status: :unprocessable_entity }

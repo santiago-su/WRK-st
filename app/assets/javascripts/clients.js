@@ -1,6 +1,8 @@
 $(document).ready(function() {
-    $('form#new_client').bootstrapValidator({
+  $(document).bind('ajaxSend', '#new_client', function(event, jqxhr, request, settings){
+    $('#new_client').bootstrapValidator({
         message: 'This value is not valid',
+        excluded: [':disabled'],
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -50,7 +52,9 @@ $('form#new_client').on('success.form.bv', function(e) {
             e.preventDefault();
         }
     });
-});
+
+
+
 
 (function($) {
 
@@ -61,7 +65,8 @@ $('form#new_client').on('success.form.bv', function(e) {
 
 }(jQuery));
 
-$(document).ready(function(){
+})
+
 
   $(document).bind('ajaxSend', '#editt_form', function(event, jqxhr, settings, exception){
     $('#editt_form').bootstrapValidator({
@@ -108,7 +113,7 @@ $(document).ready(function(){
         }
     });
 
-$('editt_form').on('success.form.bv', function(e) {
+$('#editt_form').on('success.form.bv', function(e) {
         // Called when the form is valid
         var $form = $(e.target);
         if ($form.data('remote') && $.rails !== undefined) {
