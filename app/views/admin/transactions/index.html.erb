@@ -1,21 +1,16 @@
-<h2>Movimientos
-  <button type="button" class="btn btn-primary" data-toggle="collapse" 
-   data-target="#demo" id="new_transaction_button">
-    <span class="glyphicon glyphicon-plus"></span>  Nuevo movimiento
-  </button>
-</h2>
-
-<div id="demo" class="collapse well">
-  <%= render partial: "form", locals: { admin: @transaction }%>
-</div>
+<h1>Movimientos
+<%= link_to '#new_transaction_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
+  <span class="glyphicon glyphicon-plus"></span> Nuevo movimiento
+<% end %>
+</h1>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Concepto</th>
-      <th>Comentario</th>
       <th>Fecha</th>
+      <th>Concepto</th>
       <th>Cantidad</th>
+      <th>Comentario</th>
     </tr>
   </thead>
   <tbody id="transaction_table">
@@ -24,3 +19,19 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="modal fade" id="new_transaction_modal" tabindex="-1" role="dialog"
+ aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Nuevo movimiento</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', modal: true %>
+      </div>
+
+    </div>
+  </div>
+</div>

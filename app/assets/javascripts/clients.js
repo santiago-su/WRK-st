@@ -3,11 +3,6 @@ $(document).ready(function() {
     $('#new_client').bootstrapValidator({
         message: 'This value is not valid',
         excluded: [':disabled'],
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
         fields: {
             'client[name]': {
                 message: 'The username is not valid',
@@ -71,11 +66,6 @@ $('form#new_client').on('success.form.bv', function(e) {
   $(document).bind('ajaxSend', '#editt_form', function(event, jqxhr, settings, exception){
     $('#editt_form').bootstrapValidator({
         message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
         fields: {
             'client[name]': {
                 message: 'The username is not valid',

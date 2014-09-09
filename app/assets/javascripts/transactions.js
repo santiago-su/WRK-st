@@ -1,34 +1,64 @@
-$(document).ready(function(){
+$(document).ready(function() {
+  $(document).bind('ajaxSend', '#new_transaction', function(event, jqxhr, request, settings){
+    $('#new_transaction').bootstrapValidator({
+        message: 'This value is not valid',
+        excluded: [':disabled'],
+        fields: {
+            'transaction[type_of_transaction]': {
+                message: 'Debe elegir uno',
+                validators: {
+                    notEmpty: {
+                        message: 'Debe elegir uno'
+                    },
+                }
+            },
+            'transaction[amount]': {
+                message: 'Debe ser un valor numérico',
+                validators: {
+                    notEmpty: {
+                        message: 'No puede estar vacío'
+                      }
+                    }
+                  },
+              'transaction[date]': {
+                  message: 'The username is not valid',
+                  validators: {
+                      notEmpty: {
+                          message: 'No puede estar vacío'
+                        }
+                      }
+                    },
+              'transaction[concept]': {
+                  message: 'The username is not valid',
+                  validators: {
+                      notEmpty: {
+                          message: 'No puede estar vacío'
+                        }
+                      }
+                    }
 
-  $(document).bind('ajaxError', 'form#new_location', function(event, jqxhr, settings, exception){
+        }
+    });
 
-    // note: jqxhr.responseJSON undefined, parsing responseText instead
-    $(event.data).render_form_errors( $.parseJSON(jqxhr.responseText) );
+$('form#new_transaction').on('success.form.bv', function(e) {
+        // Called when the form is valid
+        var $form = $(e.target);
+        if ($form.data('remote') && $.rails !== undefined) {
+            e.preventDefault();
+        }
+    });
 
-  });
 
-});
+
 
 (function($) {
-$.fn.render_form_errors = function(errors){
-  $form = this;
-  this.clear_previous_errors();
-  model = this.data('model');
-  // show error messages in input form-group help-block
-  $.each(errors, function(field, messages){
-    $input = $('input[name="' + model + '[' + field + ']"]');
-    $input.closest('.form-group').addClass('has-error').find('.help-block').html( messages.join(' & ') );
-  });
 
-};
-
-$.fn.clear_previous_errors = function(){
-  $('.form-group.has-error', this).each(function(){
-    $('.help-block', $(this)).html('');
-    $(this).removeClass('has-error');
-  });
-}
-
-
+  $.fn.modal_win = function(){
+    this.modal('hide');
+    this.find('form input').val('');
+  };
 
 }(jQuery));
+
+})
+});

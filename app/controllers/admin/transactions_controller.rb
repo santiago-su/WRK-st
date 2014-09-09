@@ -14,12 +14,11 @@ before_action :authenticate_admin!
     @transaction = Transaction.new transaction_params
     respond_to do |format|
       if @transaction.save
-        flash[:notice] = "Transacción creada"
         format.html { redirect_to admin_transactions_path, notice: "Su transacción ha sido guardada" }
         format.js
       else
         format.html { render action: "new" }
-        format.js { render json: @transaction.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -27,16 +26,16 @@ before_action :authenticate_admin!
   def edit
     @transaction = Transaction.find(params[:id])
     @transactions = Transaction.all
+
   end
 
   def update
     @transaction = Transaction.find(params[:id])
     respond_to do |format|
       if @transaction.update(transaction_params)
-        flash[:notice] = "Transacción actualizada"
-        format.js
+        format.html { redirect_to admin_transactions_path, notice: "Su movimiento ha sido actualizado" }
       else
-        format.js { render json: @transaction.errors, status: :unprocessable_entity }
+        format.html { render :edit }
       end
     end
   end
