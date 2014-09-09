@@ -1,12 +1,28 @@
-<%= form_for [:admin, @location], html: { class: "form-inline"} do |f| %>
-<table class="table table-hover">
-  <% @locations.each do |location| %>
-  <tr>
-    <% if location == @location %>
-      <%= render partial: "row_form", locals: { f: f }%>
-    <% else %>
-      <%= render partial: "table_row", locals: { location: location } %>
-    <% end %>
-  <% end %>
-</tr>
+<%= form_for([:admin, @location], html: {role: :form, 'data-model' => 'transaction'}) do |f| %>
+
+<% if f.object.errors.any? %>
+<div id="error_explanation">
+  <% f.object.errors.full_messages %>
+  <div class="alert alert-danger">
+    <p class="alert-link">Los campos no pueden estar vacíos</p>
+  </div>
+</div>
+<% end %>
+
+<div class="form-group">
+  <%= f.label :name, class: 'control-label' %><br>
+  <%= f.text_field :name, class: 'form-control' %>
+  <span class="help-block"></span>
+</div>
+
+<div class="form-group">
+  <%= f.label :description, class: 'control-label' %><br>
+  <%= f.text_field :description, class: 'form-control' %>
+  <span class="help-block"></span>
+</div>
+
+<div class="actions">
+  <button type="submit" class="btn btn-default">
+    <span class="glyphicon glyphicon-ok"></span> Guardar
+</div>
 <% end %>

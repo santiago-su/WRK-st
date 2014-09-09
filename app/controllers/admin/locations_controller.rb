@@ -36,8 +36,9 @@ class Admin::LocationsController < ApplicationController
     @location = Location.find(params[:id])
     respond_to do |format|
       if @location.update(location_params)
-        flash[:notice] = "Espacio actualizado"
-        format.js
+        format.html { redirect_to admin_locations_path, notice: "Su espacio ha sido actualizado" }
+      else
+        format.html { render :edit }
       end
     end
   end

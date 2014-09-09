@@ -1,41 +1,47 @@
-$(document).ready(function(){
+$(document).ready(function() {
+  $(document).bind('ajaxSend', '#new_location', function(event, jqxhr, request, settings){
+    $('#new_location').bootstrapValidator({
+        message: 'This value is not valid',
+        excluded: [':disabled'],
+        fields: {
+            'location[name]': {
+                message: 'No puede estar vacío',
+                validators: {
+                    notEmpty: {
+                        message: 'No puede estar vacío'
+                    },
+                }
+            },
+            'location[description]': {
+                message: 'No puede estar vacío',
+                validators: {
+                    notEmpty: {
+                        message: 'No puede estar vacío'
+                      }
+                    }
+                  },
+              }
+    });
 
-  $(document).bind('ajaxError', 'form#new_location', function(event, jqxhr, settings, exception){
+$('form#new_location').on('success.form.bv', function(e) {
+        // Called when the form is valid
+        var $form = $(e.target);
+        if ($form.data('remote') && $.rails !== undefined) {
+            e.preventDefault();
+        }
+    });
 
-    // note: jqxhr.responseJSON undefined, parsing responseText instead
-    $(event.data).render_form_errors( $.parseJSON(jqxhr.responseText) );
 
-  });
 
-});
 
 (function($) {
 
-  $.fn.modal_success = function(){
+  $.fn.modal_ok = function(){
     this.modal('hide');
-    this.find('form input[type="text"]').val('');
-    this.clear_previous_errors();
+    this.find('form input').val('');
   };
-
-  $.fn.render_form_errors = function(errors){
-
-    $form = this;
-    this.clear_previous_errors();
-    model = this.data('model');
-
-    // show error messages in input form-group help-block
-    $.each(errors, function(field, messages){
-      $input = $('input[name="' + model + '[' + field + ']"]');
-      $input.closest('.form-group').addClass('has-error').find('.help-block').html( messages.join(' & ') );
-    });
-
-  };
-
-  $.fn.clear_previous_errors = function(){
-    $('.form-group.has-error', this).each(function(){
-      $('.help-block', $(this)).html('');
-      $(this).removeClass('has-error');
-    });
-  }
 
 }(jQuery));
+
+})
+});
