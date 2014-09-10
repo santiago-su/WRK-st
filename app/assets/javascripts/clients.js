@@ -50,6 +50,9 @@ $('form#new_client').on('success.form.bv', function(e) {
 $('#new_client_modal').on('shown.bs.modal', function() {
   $('#new_client').bootstrapValidator('resetForm', true);
   $('#new_client').find('#client_description').val('');
+  $('#new_client').find('#client_responsible').val('');
+  $('#new_client').find('#client_email').val('');
+  $('#new_client').find('#client_phone').val('');
 });
 
 
@@ -59,7 +62,6 @@ $('#new_client_modal').on('shown.bs.modal', function() {
 
   $.fn.modal_win = function(){
     this.modal('hide');
-
   };
 
 }(jQuery));

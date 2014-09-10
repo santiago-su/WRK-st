@@ -59,7 +59,6 @@ $('#new_transaction_modal').on('shown.bs.modal', function() {
 
   $.fn.modal_transaction = function(){
     this.modal('hide');
-
   };
 
 }(jQuery));
