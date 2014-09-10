@@ -30,6 +30,9 @@ $('form#new_location').on('success.form.bv', function(e) {
             e.preventDefault();
         }
     });
+$('#new_location_modal').on('shown.bs.modal', function() {
+  $('#new_location').bootstrapValidator('resetForm', true);
+});
 
 
 
