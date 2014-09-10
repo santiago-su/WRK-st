@@ -47,6 +47,10 @@ $('form#new_client').on('success.form.bv', function(e) {
             e.preventDefault();
         }
     });
+$('#new_client_modal').on('shown.bs.modal', function() {
+  $('#new_client').bootstrapValidator('resetForm', true);
+  $('#new_client').find('#client_description').val('');
+});
 
 
 
@@ -55,7 +59,7 @@ $('form#new_client').on('success.form.bv', function(e) {
 
   $.fn.modal_win = function(){
     this.modal('hide');
-    this.find('form input').val('');
+
   };
 
 }(jQuery));

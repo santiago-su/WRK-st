@@ -47,15 +47,19 @@ $('form#new_transaction').on('success.form.bv', function(e) {
             e.preventDefault();
         }
     });
+$('#new_transaction_modal').on('shown.bs.modal', function() {
+  $('#new_transaction').bootstrapValidator('resetForm', true);
+  $('#new_transaction').find('#transaction_commentary').val('');
+});
 
 
 
 
 (function($) {
 
-  $.fn.modal_win = function(){
+  $.fn.modal_transaction = function(){
     this.modal('hide');
-    this.find('form input').val('');
+
   };
 
 }(jQuery));
