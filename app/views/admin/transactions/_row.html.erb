@@ -1,4 +1,4 @@
-<tr>
+<tr id="transaction_<%= transaction.id %>">
 <td><%= l transaction.date.to_date, format: :long %></td>
 <td><%= transaction.concept %></td>
 <% if transaction.type_of_transaction == "1" %>
@@ -8,8 +8,27 @@
 <% end %>
 <td><%= transaction.commentary %></td>
 <td>
-  <%= link_to edit_admin_transaction_path(transaction), class: "btn btn-default btn-xs" do %>
-    <span class="glyphicon glyphicon-pencil"></span>  Editar
+  <%= link_to "#edit_transaction_modal_#{transaction.id}", 'data-toggle' => 'modal', class: "btn btn-default btn-xs" do %>
+    <span class="glyphicon glyphicon-pencil"></span> Editar
   <% end %>
+
+  <%= link_to admin_transaction_path(transaction), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } do %>
+    <span class="glyphicon glyphicon-trash"></span>Eliminar
+  <% end %>
+  <div class="modal fade" id="edit_transaction_modal_<%= transaction.id %>" tabindex="-1" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Editar movimiento</h4>
+        </div>
+        <div class="modal-body">
+          <%= render 'edit_form', transaction: transaction %>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </td>
 </tr>

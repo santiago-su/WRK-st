@@ -1,61 +1,41 @@
-<% modal ||= false %>
-<% remote = modal ? true : false %>
 <%= form_for([:admin, @client], remote: true, html: {role: :form, 'data-model' => 'client'}) do |f| %>
-
-<% if f.object.errors.any? %>
-<div id="error_explanation">
-  <% f.object.errors.full_messages %>
-  <div class="alert alert-danger">
-    <p class="alert-link">Debe tener nombre, oficina, horas disponibles en la sala de juntas y fecha de ingreso</p>
-  </div>
-</div>
-<% end %>
 
 <div class="form-group">
   <%= f.label :name, "Nombre" %>
-  <%= f.text_field :name, class: "form-control" %>
+  <%= f.text_field :name, class: "form-control",
+      data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
 </div>
 
 <div class="form-group">
   <%= f.label :responsible, "Responsable" %>
   <%= f.text_field :responsible, class: "form-control" %>
-  <span class="help-block"></span>
 </div>
 
 <div class="form-group">
   <%= f.label :email, "Correo electrónico" %>
   <%= f.text_field :email, class: "form-control" %>
-  <span class="help-block"></span>
 </div>
 
 <div class="form-group">
   <%= f.label :phone, "Teléfono" %>
   <%= f.text_field :phone, class: "form-control" %>
-  <span class="help-block"></span>
 </div>
 
 <div class="form-group">
   <%= f.label :description, "Descripción" %>
   <%= f.text_area :description, class: "form-control" %>
-  <span class="help-block"></span>
 </div>
 
 <div class="form-group">
   <%= f.label :meeting_office_hours, "Horas sala de juntas" %>
-  <%= f.number_field :meeting_office_hours, class: "form-control", min: 0 %>
-  <span class="help-block"></span>
-</div>
-
-<div class="form-group">
-  <%= f.label :location, "Espacio" %>
-  <%= f.select :location, options_from_collection_for_select(Location.all, :id, :name), { prompt: "Selecciona un espacio" }, class: "form-control" %>
-  <span class="help-block"></span>
+  <%= f.number_field :meeting_office_hours, class: "form-control", min: 0,
+      data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
 </div>
 
 <div class="form-group">
   <%= f.label :entry_date, "Fecha de ingreso" %>
-  <%= f.date_field :entry_date, value: Time.now.strftime('%Y-%m-%d'), class: "form-control" %>
-  <span class="help-block"></span>
+  <%= f.date_field :entry_date, value: Time.now.strftime('%Y-%m-%d'), class: "form-control",
+      data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
 </div>
 
 

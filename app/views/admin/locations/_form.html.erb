@@ -1,31 +1,26 @@
-<% modal ||= false %>
-<% remote = modal ? true : false %>
-<%= form_for([:admin, @location], remote: true, html: {role: :form, 'data-model' => 'location'}) do |f| %>
-
-  <% if f.object.errors.any? %>
-  <div id="error_explanation">
-    <% f.object.errors.full_messages %>
-    <div class="alert alert-danger">
-      <p class="alert-link">Debe tener nombre y descripción</p>
-    </div>
-  </div>
-  <% end %>
+<%= form_for([:admin, location], remote: true, html: {role: :form, 'data-model' => 'location'}) do |f| %>
 
   <div class="form-group">
     <%= f.label :name, class: 'control-label' %><br>
-    <%= f.text_field :name, class: 'form-control' %>
-    <span class="help-block"></span>
+    <%= f.text_field :name, class: 'form-control',
+          data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
   </div>
 
   <div class="form-group">
     <%= f.label :description, class: 'control-label' %><br>
-    <%= f.text_field :description, class: 'form-control' %>
-    <span class="help-block"></span>
+    <%= f.text_field :description, class: 'form-control',
+          data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :client_id, "Cliente" %>
+    <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :name), { prompt: "Selecciona un cliente" }, { class: "form-control" } %>
   </div>
 
   <div class="actions">
     <button type="submit" class="btn btn-default" id="modal_ok">
       <span class="glyphicon glyphicon-ok"></span> Guardar
+    </button>
   </div>
 
 <% end %>

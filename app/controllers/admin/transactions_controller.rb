@@ -33,9 +33,9 @@ before_action :authenticate_admin!
     @transaction = Transaction.find(params[:id])
     respond_to do |format|
       if @transaction.update(transaction_params)
-        format.html { redirect_to admin_transactions_path, notice: "Su movimiento ha sido actualizado" }
+        format.js
       else
-        format.html { render :edit }
+        format.js
       end
     end
   end

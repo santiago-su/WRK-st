@@ -1,2 +1,5 @@
-$("#tac").html("<%= j (render partial: 'show', locals: { client: @client}) %>");
-alert("Cliente actualizado");
+$('#edit_client_modal').modal('hide');
+$('#edit_client_modal').on("hidden.bs.modal", function () {
+  $('#client_show').html("<%= j(render 'show') %>");
+  $('#edit_client').bootstrapValidator();
+});

@@ -1,3 +1,7 @@
-$("#transaction_table").on("ajax:success", function(event, data, status, xhr) {
-  alert("lalal")
+$('#edit_transaction_modal_<%= @transaction.id %>').modal('hide');
+$('#edit_transaction_modal_<%= @transaction.id %>').on("hidden.bs.modal", function () {
+  $('tr#transaction_<%= @transaction.id %>').
+    after("<%= j (render partial: 'row', locals: { transaction: @transaction }) %>").
+    remove();
+    $('#edit_transaction_<%= @transaction.id %>').bootstrapValidator();
 });

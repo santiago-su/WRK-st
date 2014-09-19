@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20140827155819) do
     t.string   "name"
     t.string   "responsible"
     t.string   "email"
-    t.string   "location"
     t.string   "description"
     t.string   "phone"
     t.integer  "meeting_office_hours"
@@ -50,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140827155819) do
   create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "description"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

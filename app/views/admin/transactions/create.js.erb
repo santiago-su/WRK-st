@@ -1,2 +1,5 @@
 $('#transaction_table').append("<%= j render partial: 'row', locals: { transaction: @transaction } %>");
-$('#new_transaction_modal').modal_transaction();
+$('#edit_transaction_<%= @transaction.id %>').bootstrapValidator();
+
+$('#new_transaction').bootstrapValidator('resetForm', true);
+$('#new_transaction_modal').modal('hide');

@@ -4,7 +4,6 @@ class CreateClients < ActiveRecord::Migration
       t.string :name
       t.string :responsible
       t.string :email
-      t.string :location
       t.string :description
       t.string :phone
       t.integer :meeting_office_hours

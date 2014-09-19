@@ -1,7 +1,7 @@
 class Admin::LocationsController < ApplicationController
 
   def index
-    @locations = Location.all
+    @locations = Location.all.order(:name)
     @location = Location.new
   end
 
@@ -36,9 +36,9 @@ class Admin::LocationsController < ApplicationController
     @location = Location.find(params[:id])
     respond_to do |format|
       if @location.update(location_params)
-        format.html { redirect_to admin_locations_path, notice: "Su espacio ha sido actualizado" }
+        format.js
       else
-        format.html { render :edit }
+        format.js
       end
     end
   end
@@ -53,6 +53,6 @@ class Admin::LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:name, :description)
+    params.require(:location).permit(:name, :description, :client_id)
   end
 end

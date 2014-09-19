@@ -1,36 +1,31 @@
-<%= form_for([:admin, @transaction], html: {role: :form, 'data-model' => 'transaction'}) do |f| %>
-
-<% if f.object.errors.any? %>
-<div id="error_explanation">
-  <% f.object.errors.full_messages %>
-  <div class="alert alert-danger">
-    <p class="alert-link">Debe tener fecha, cantidad, tipo de movimiento y concepto</p>
-  </div>
-</div>
-<% end %>
+<%= form_for([:admin, transaction],remote: true, html: {role: :form, 'data-model' => 'transaction'}) do |f| %>
 
 <div class="row">
   <div class="form-group col-xs-3">
     <%= f.label :type_of_transaction_1, "Ingreso", class:  "control-label" %>
     <%= f.radio_button(:type_of_transaction, value=1, class: "radio-inline") %>
     <%= f.label :type_of_transaction_2, "Egreso", class: "control-label" %>
-    <%= f.radio_button(:type_of_transaction, value=2, class: "radio-inline") %>
+    <%= f.radio_button(:type_of_transaction, value=2, class: "radio-inline",
+      data: { 'bv-notempty' => true, 'bv-notempty-message' => 'Necesita seleccionar uno' }) %>
   </div>
-  <div class="form-group col-xs-4">
+  <div class="form-group col-xs-3">
     <%= f.label :amount, "Cantidad", class: "control-label" %>
-    <%= f.number_field :amount, min: 1, class: "form-control" %>
+    <%= f.number_field :amount, min: 1, class: "form-control",
+        data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
   </div>
 
   <div class="form-group col-xs-5">
     <%= f.label :date, "Fecha", class: "control-label" %>
-    <%= f.date_field :date, value: @transaction.date, class: "form-control" %>
+    <%= f.date_field :date, value: transaction.date, class: "form-control",
+        data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
   </div>
 </div>
 
 
 <div class="form-group">
   <%= f.label :concept, "Concepto", class: "control-label" %>
-  <%= f.text_field :concept, class: "form-control" %>
+  <%= f.text_field :concept, class: "form-control",
+      data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
 </div>
 
 <div class="form-group">
@@ -40,15 +35,10 @@
 
 
 <div class="form-group">
-  <div class="col-sm-offset-9 col-sm-0">
+  <div class="col-sm-offset-10 col-sm-0">
     <button type="submit" class="btn btn-default" id="submit_transaction_button">
       <span class="glyphicon glyphicon-ok"></span> Guardar
     </button>
-    o
-    <%= link_to "cancelar", admin_transactions_path %>
-    <%= link_to admin_transaction_path(@transaction), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } do %>
-      <span class="glyphicon glyphicon-trash"></span>
-    <% end %>
   </div>
 </div>
 <% end %>

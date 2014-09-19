@@ -8,7 +8,7 @@
   <thead>
     <tr>
       <th>Cliente</th>
-      <th>Oficina</th>
+      <th>Espacios</th>
       <th></th>
     </tr>
   </thead>
@@ -28,7 +28,7 @@
         <h4 class="modal-title" id="myModalLabel">Nuevo cliente</h4>
       </div>
       <div class="modal-body">
-        <%= render 'form', modal: true %>
+        <%= render 'form', client: @client %>
       </div>
 
     </div>

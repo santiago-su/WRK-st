@@ -29,9 +29,13 @@
         <h4 class="modal-title" id="myModalLabel">Nuevo movimiento</h4>
       </div>
       <div class="modal-body">
-        <%= render 'form', modal: true %>
+        <%= render 'form', transaction: @transaction %>
       </div>
 
     </div>
   </div>
 </div>
+
+<% content_for :sidebar do %>
+  <p>Mi saldo es <%= number_to_currency(current_admin.balance) %></p>
+<% end %>

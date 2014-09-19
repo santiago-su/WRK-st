@@ -15,7 +15,7 @@ class Admin::ClientsController < ApplicationController
       if @client.save
         format.js
       else
-        format.js { render json: @client.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -35,10 +35,10 @@ class Admin::ClientsController < ApplicationController
     @client = Client.find(params[:id])
     respond_to do |format|
     if @client.update(client_params)
-      
+
       format.js
     else
-      format.js { render json: @client.errors, status: :unprocessable_entity }
+      format.js
     end
     end
   end
@@ -52,6 +52,6 @@ class Admin::ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:name, :location, :meeting_office_hours, :entry_date, :responsible, :email, :description, :phone)
+    params.require(:client).permit(:name, :meeting_office_hours, :entry_date, :responsible, :email, :description, :phone)
   end
 end
