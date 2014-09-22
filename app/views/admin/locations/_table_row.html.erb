@@ -1,11 +1,6 @@
 <tr id="location_<%= location.id %>">
   <td><%= location.name %></td>
   <td><%= location.description %></td>
-  <% if location.client %>
-    <td><%= location.client.name %></td>
-  <% else %>
-    <td></td>
-  <% end %>
   <td>
     <%= link_to "#edit_location_modal_#{location.id}", 'data-toggle' => 'modal', class: "btn btn-default btn-xs" do %>
       <span class="glyphicon glyphicon-pencil"></span> Editar

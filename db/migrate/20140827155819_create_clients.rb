@@ -8,6 +8,7 @@ class CreateClients < ActiveRecord::Migration
       t.string :phone
       t.integer :meeting_office_hours
       t.string :entry_date
+      t.integer :location_id
       t.timestamps
     end
   end

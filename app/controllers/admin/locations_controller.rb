@@ -18,7 +18,7 @@ class Admin::LocationsController < ApplicationController
         format.js
       else
         format.html { render action: 'new' }
-        format.js   { render json: @location.errors, status: :unprocessable_entity }
+        format.js  
       end
     end
   end
@@ -53,6 +53,6 @@ class Admin::LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:name, :description, :client_id)
+    params.require(:location).permit(:name, :description)
   end
 end

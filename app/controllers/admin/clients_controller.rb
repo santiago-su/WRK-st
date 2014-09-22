@@ -52,6 +52,6 @@ class Admin::ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:name, :meeting_office_hours, :entry_date, :responsible, :email, :description, :phone)
+    params.require(:client).permit(:name, :meeting_office_hours, :location_id, :entry_date, :responsible, :email, :description, :phone)
   end
 end
