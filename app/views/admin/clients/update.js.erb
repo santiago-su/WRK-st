@@ -1,5 +1,5 @@
 $('#edit_client_modal').modal('hide');
 $('#edit_client_modal').on("hidden.bs.modal", function () {
-  $('#client_show').html("<%= j(render 'show') %>");
+  $('#client_show div').html("<%= j(render 'show') %>");
   $('#edit_client').bootstrapValidator();
 });

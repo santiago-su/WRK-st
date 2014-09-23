@@ -43,5 +43,5 @@
 </div>
 
 <% content_for :sidebar do %>
-  <p>Mi saldo es <%= number_to_currency(current_admin.balance) %></p>
+  <h3>Mi saldo es:</h3> <h3><%= number_to_currency(current_admin.balance) %></h3>
 <% end %>
