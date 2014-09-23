@@ -11,12 +11,12 @@ class Admin::LocationsController < ApplicationController
 
   def create
     @location = Location.new location_params
-    respond_to do |format|
-      if @location.save
+    if @location.save
+      respond_to do |format|
         format.js
-      else
-        render nothing: true
       end
+    else
+      render nothing: true
     end
   end
 
@@ -31,12 +31,12 @@ class Admin::LocationsController < ApplicationController
 
   def update
     @location = Location.find(params[:id])
-    respond_to do |format|
-      if @location.update(location_params)
+    if @location.update(location_params)
+      respond_to do |format|
         format.js
-      else
-        render nothing: true
       end
+    else
+      render nothing: true
     end
   end
 

@@ -11,12 +11,12 @@ class Admin::ClientsController < ApplicationController
 
   def create
     @client = Client.new client_params
-    respond_to do |format|
-      if @client.save
+    if @client.save
+      respond_to do |format|
         format.js
-      else
-        render nothing: true
       end
+    else
+      render nothing: true
     end
   end
 
@@ -30,12 +30,12 @@ class Admin::ClientsController < ApplicationController
 
   def update
     @client = Client.find(params[:id])
-    respond_to do |format|
-      if @client.update(client_params)
+    if @client.update(client_params)
+      respond_to do |format|
         format.js
-      else
-        render nothing: true
       end
+    else
+      render nothing: true
     end
   end
 

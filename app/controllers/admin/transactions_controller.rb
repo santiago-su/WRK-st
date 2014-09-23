@@ -29,12 +29,12 @@ before_action :authenticate_admin!
 
   def update
     @transaction = Transaction.find(params[:id])
-    respond_to do |format|
-      if @transaction.update(transaction_params)
+    if @transaction.update(transaction_params)
+      respond_to do |format|
         format.js
-      else
-        render nothing: true
       end
+    else
+      render nothing: true
     end
   end
 
