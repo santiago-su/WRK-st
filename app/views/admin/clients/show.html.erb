@@ -16,8 +16,6 @@
         <dd><%= @client.description %></dd>
         <dt>Horas disponibles de Sala de Juntas</dt>
         <dd><%= @client.meeting_office_hours %></dd>
-        <dt>Espacios</dt>
-        <dd><%= @client.locations.map(&:name).join(', ') %></dd>
         <dt>Fecha de Ingreso</dt>
         <dd><%= @client.entry_date %></dd>
       </dl>
