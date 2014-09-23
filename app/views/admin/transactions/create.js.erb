@@ -1,5 +1,7 @@
-$('#transaction_table').append("<%= j render partial: 'row', locals: { transaction: @transaction } %>");
+$('#transaction_table tbody').append("<%= j render partial: 'row', locals: { transaction: @transaction } %>");
 $('#edit_transaction_<%= @transaction.id %>').bootstrapValidator();
 
-$('#new_transaction').bootstrapValidator('resetForm', true);
+$('#transaction__new_transaction').bootstrapValidator('resetForm', true);
 $('#new_transaction_modal').modal('hide');
+
+sortTable("#transaction_table", "date");

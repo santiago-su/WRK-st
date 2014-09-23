@@ -1,4 +1,4 @@
-<%= form_for([:admin, transaction], remote: true, html: {role: :form, 'data-model' => 'transaction'}) do |f| %>
+<%= form_for([:admin, transaction], remote: true, html: {role: :form, 'data-model' => 'transaction'}, namespace: "transaction_#{transaction.id}") do |f| %>
 
 <div class="row">
   <div class="form-group col-xs-4">
@@ -16,7 +16,7 @@
 
   <div class="form-group col-xs-4">
     <%= f.label :date, "Fecha", class: "control-label" %>
-    <%= f.date_field :date, value: Time.now.strftime('%Y-%m-%d'), class: "form-control",
+    <%= f.date_field :date, value: transaction.date, class: "form-control",
         data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
   </div>
 </div>
