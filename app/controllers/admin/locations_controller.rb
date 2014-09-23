@@ -11,8 +11,8 @@ class Admin::LocationsController < ApplicationController
 
   def create
     @location = Location.new location_params
-    if @location.save
-      respond_to do |format|
+    respond_to do |format|
+      if @location.save
         format.js
       else
         render nothing: true
