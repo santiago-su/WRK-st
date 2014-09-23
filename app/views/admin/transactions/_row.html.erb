@@ -1,4 +1,4 @@
-<tr id="transaction_<%= transaction.id %>">
+<tr id="transaction_<%= transaction.id %>" data-date="<%= transaction.date.strftime("%Y%m%d") %>">
 <td><%= l transaction.date.to_date, format: :long %></td>
 <td><%= transaction.concept %></td>
 <% if transaction.type_of_transaction == "1" %>
@@ -13,7 +13,7 @@
   <% end %>
 
   <%= link_to admin_transaction_path(transaction), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } do %>
-    <span class="glyphicon glyphicon-trash"></span>Eliminar
+    <span class="glyphicon glyphicon-trash"></span> Eliminar
   <% end %>
   <div class="modal fade" id="edit_transaction_modal_<%= transaction.id %>" tabindex="-1" role="dialog"
    aria-labelledby="myModalLabel" aria-hidden="true">
@@ -24,7 +24,7 @@
           <h4 class="modal-title" id="myModalLabel">Editar movimiento</h4>
         </div>
         <div class="modal-body">
-          <%= render 'edit_form', transaction: transaction %>
+          <%= render 'form', transaction: transaction %>
         </div>
 
       </div>

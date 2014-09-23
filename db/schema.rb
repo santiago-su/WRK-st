@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 20140827155819) do
     t.string   "type_of_transaction"
     t.string   "concept"
     t.string   "commentary"
+    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "date"
   end
 
 end

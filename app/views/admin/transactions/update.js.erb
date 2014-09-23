@@ -3,5 +3,6 @@ $('#edit_transaction_modal_<%= @transaction.id %>').on("hidden.bs.modal", functi
   $('tr#transaction_<%= @transaction.id %>').
     after("<%= j (render partial: 'row', locals: { transaction: @transaction }) %>").
     remove();
-    $('#edit_transaction_<%= @transaction.id %>').bootstrapValidator();
+  $('#edit_transaction_<%= @transaction.id %>').bootstrapValidator();
+  sortTable("#transaction_table", "date");
 });

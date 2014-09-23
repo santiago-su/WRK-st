@@ -23,3 +23,11 @@ window.onLoad = function(callback) {
   $(document).ready(callback);
   $(document).on('page:load', callback);
 };
+
+window.sortTable = function(table, dataKey) {
+  var rows = $(table).find("tbody tr");
+  var sorted = rows.sort(function(a, b) {
+    return $(a).data(dataKey) - $(b).data(dataKey);
+  });
+  $(table).find("tbody").html(sorted);
+}

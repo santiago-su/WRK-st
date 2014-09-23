@@ -5,8 +5,8 @@ class CreateTransactions < ActiveRecord::Migration
       t.string :type_of_transaction
       t.string :concept
       t.string :commentary
+      t.date :date
       t.timestamps
-      t.string :date
     end
   end
 end
