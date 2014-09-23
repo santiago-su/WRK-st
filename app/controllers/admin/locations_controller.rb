@@ -11,14 +11,11 @@ class Admin::LocationsController < ApplicationController
 
   def create
     @location = Location.new location_params
-
-    respond_to do |format|
-      if @location.save
-        format.html { redirect_to @location, notice: 'Espacio creado.' }
+    if @location.save
+      respond_to do |format|
         format.js
       else
-        format.html { render action: 'new' }
-        format.js  
+        render nothing: true
       end
     end
   end
@@ -38,7 +35,7 @@ class Admin::LocationsController < ApplicationController
       if @location.update(location_params)
         format.js
       else
-        format.js
+        render nothing: true
       end
     end
   end

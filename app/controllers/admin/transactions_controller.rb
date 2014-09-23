@@ -12,14 +12,12 @@ before_action :authenticate_admin!
 
   def create
     @transaction = Transaction.new transaction_params
-    respond_to do |format|
-      if @transaction.save
-        format.html { redirect_to admin_transactions_path, notice: "Su transacción ha sido guardada" }
-        format.js
-      else
-        format.html { render action: "new" }
+    if @transaction.save
+      respond_to do |format|
         format.js
       end
+    else
+      render nothing: true
     end
   end
 
@@ -35,7 +33,7 @@ before_action :authenticate_admin!
       if @transaction.update(transaction_params)
         format.js
       else
-        format.js
+        render nothing: true
       end
     end
   end

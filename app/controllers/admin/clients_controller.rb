@@ -15,7 +15,7 @@ class Admin::ClientsController < ApplicationController
       if @client.save
         format.js
       else
-        format.js
+        render nothing: true
       end
     end
   end
@@ -26,20 +26,16 @@ class Admin::ClientsController < ApplicationController
 
   def edit
     @client = Client.find(params[:id])
-    respond_to do |format|
-      format.js
-    end
   end
 
   def update
     @client = Client.find(params[:id])
     respond_to do |format|
-    if @client.update(client_params)
-
-      format.js
-    else
-      format.js
-    end
+      if @client.update(client_params)
+        format.js
+      else
+        render nothing: true
+      end
     end
   end
 
