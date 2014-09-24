@@ -1,4 +1,6 @@
 $('#clients_table').append("<%= j render partial: 'row', locals: { client: @client } %>");
 
 $('#new_client').bootstrapValidator('resetForm', true);
+$('#new_client').find('input').val('');
+$('#new_client').find('textarea').val('');
 $('#new_client_modal').modal('hide');

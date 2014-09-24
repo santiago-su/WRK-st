@@ -2,6 +2,8 @@ $('#transaction_table tbody').append("<%= j render partial: 'row', locals: { tra
 $('#edit_transaction_<%= @transaction.id %>').bootstrapValidator();
 
 $('#transaction__new_transaction').bootstrapValidator('resetForm', true);
+$('#transaction__new_transaction').find('textarea').val('');
 $('#new_transaction_modal').modal('hide');
 
 sortTable("#transaction_table", "date");
+$('#transaction_<%= @transaction.id %>').hide().fadeIn("slow");
