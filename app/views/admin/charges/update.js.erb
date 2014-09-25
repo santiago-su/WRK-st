@@ -1,0 +1,9 @@
+$('#edit_charge_modal_<%= @charge.id %>').modal('hide');
+$('#edit_charge_modal_<%= @charge.id %>').on("hidden.bs.modal", function () {
+  $('tr#charge_<%= @charge.id %>').
+    after("<%= j (render partial: 'charge', locals: { charge: @charge, client: @client }) %>").
+    remove();
+    $('#edit_charge_<%= @charge.id %>').bootstrapValidator();
+});
+
+displayAlert("El cargo ha sido actualizado");

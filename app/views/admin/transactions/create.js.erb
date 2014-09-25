@@ -7,3 +7,5 @@ $('#new_transaction_modal').modal('hide');
 
 sortTable("#transaction_table", "date");
 $('#transaction_<%= @transaction.id %>').hide().fadeIn("slow");
+
+displayAlert("El movimiento ha sido creado");

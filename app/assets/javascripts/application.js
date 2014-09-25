@@ -31,3 +31,10 @@ window.sortTable = function(table, dataKey) {
   });
   $(table).find("tbody").html(sorted);
 }
+
+window.displayAlert = function(text) {
+  var alert = $('<div class="alert alert-success alert-dismissible"></div>').
+    html('<button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>').
+    append(text).hide().appendTo($("#alerts")).fadeIn();
+  setTimeout(function () { alert.fadeOut(); }, 5000);
+}

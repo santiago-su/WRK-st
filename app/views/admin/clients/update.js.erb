@@ -3,3 +3,5 @@ $('#edit_client_modal').on("hidden.bs.modal", function () {
   $('#client_show div').html("<%= j(render 'show') %>");
   $('#edit_client').bootstrapValidator();
 });
+
+displayAlert("El cliente ha sido actualizado");

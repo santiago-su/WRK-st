@@ -1,0 +1,34 @@
+<h1>Movimientos del cliente <%= @client.name %>
+<%= link_to '#new_charge_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
+  <span class="glyphicon glyphicon-plus"></span> Nuevo Cargo
+<% end %>
+</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Concepto</th>
+      <th>Cargo</th>
+    </tr>
+  </thead>
+  <tbody id="charges_table">
+    <%= render partial: "charge", collection: @charges, locals: { client: @client } %>
+  </tbody>
+</table>
+
+<div class="modal fade" id="new_charge_modal" tabindex="-1" role="dialog"
+ aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Nuevo cargo</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "form", locals: { client: @client, charge: @charge } %>
+      </div>
+
+    </div>
+  </div>
+</div>

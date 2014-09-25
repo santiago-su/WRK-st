@@ -1,0 +1,9 @@
+$('#charges_table').append("<%= j render partial: 'charge', locals: { charge: @charge, client: @client } %>");
+
+$('#new_charge').bootstrapValidator('resetForm', true);
+$('#new_charge').find('textarea').val('');
+
+$('#new_charge_modal').modal('hide');
+$('#charge_<%= @charge.id %>').hide().fadeIn("slow");
+
+displayAlert("El cargo ha sido creado");

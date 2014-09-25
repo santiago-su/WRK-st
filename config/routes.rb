@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :locations
     resources :transactions
-    resources :clients
+    resources :clients do
+      resources :charges
+    end
     root 'admin#index'
   end
 

@@ -5,3 +5,5 @@ $('#edit_location_modal_<%= @location.id %>').on("hidden.bs.modal", function () 
     remove();
     $('#edit_location_<%= @location.id %>').bootstrapValidator();
 });
+
+displayAlert("El espacio ha sido actualizado");

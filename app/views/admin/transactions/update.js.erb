@@ -6,3 +6,5 @@ $('#edit_transaction_modal_<%= @transaction.id %>').on("hidden.bs.modal", functi
   $('#edit_transaction_<%= @transaction.id %>').bootstrapValidator();
   sortTable("#transaction_table", "date");
 });
+
+displayAlert("El movimiento ha sido actualizado");
