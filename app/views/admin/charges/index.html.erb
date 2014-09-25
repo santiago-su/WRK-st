@@ -2,6 +2,9 @@
 <%= link_to '#new_charge_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
   <span class="glyphicon glyphicon-plus"></span> Nuevo Cargo
 <% end %>
+<%= link_to '#new_payment_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
+  <span class="glyphicon glyphicon-plus"></span> Nuevo Pago
+<% end %>
 </h1>
 
 <table class="table table-hover">
@@ -10,10 +13,12 @@
       <th>Fecha</th>
       <th>Concepto</th>
       <th>Cargo</th>
+      <th>Pago</th>
     </tr>
   </thead>
   <tbody id="charges_table">
     <%= render partial: "charge", collection: @charges, locals: { client: @client } %>
+    <%= render partial: "admin/payments/payment", collection: @payments, locals: { client: @client } %>
   </tbody>
 </table>
 
@@ -27,6 +32,22 @@
       </div>
       <div class="modal-body">
         <%= render partial: "form", locals: { client: @client, charge: @charge } %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="new_payment_modal" tabindex="-1" role="dialog"
+ aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Nuevo Pago</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "admin/payments/form", locals: { client: @client, payment: @payment } %>
       </div>
 
     </div>

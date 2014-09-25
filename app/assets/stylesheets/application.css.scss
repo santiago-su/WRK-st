@@ -20,7 +20,10 @@
 
 
 #charges_table {
-  .quantity {
+  .charge_quantity {
     color: red;
+  }
+  .payment_quantity {
+    color: green;
   }
 }

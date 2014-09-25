@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :transactions
     resources :clients do
       resources :charges
+      resources :payments
     end
     root 'admin#index'
   end

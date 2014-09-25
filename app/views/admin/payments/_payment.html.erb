@@ -1,0 +1,32 @@
+<tr id="payment_<%= payment.id %>">
+  <td><%= payment.date %></td>
+  <td><%= payment.concept %></td>
+  <td></td>
+  <td class="payment_quantity"><%= payment.quantity %></td>
+  <td>
+    <%= link_to "#edit_payment_modal_#{payment.id}", 'data-toggle' => 'modal', class: "btn btn-default btn-xs" do %>
+      <span class="glyphicon glyphicon-pencil"></span> Editar
+    <% end %>
+    <div class="modal fade" id="edit_payment_modal_<%= payment.id %>" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Editar pago</h4>
+          </div>
+          <div class="modal-body">
+            <%= render partial: "admin/payments/form", locals: { payment: payment, client: client } %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </td>
+  <td>
+  <%= link_to admin_client_payment_path(client, payment), method: :delete,  class: "btn btn-danger btn-xs" do %>
+    <span class="glyphicon glyphicon-trash"></span>  Eliminar
+  <% end %>
+  </td>
+</tr>

@@ -8,6 +8,8 @@ class Admin::ChargesController < ApplicationController
   def index
     @charge = Charge.new
     @charges = @client.charges
+    @payment = Payment.new
+    @payments = @client.payments
   end
 
   def create

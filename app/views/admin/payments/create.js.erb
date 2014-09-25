@@ -1,0 +1,9 @@
+$('#charges_table').append("<%= j render partial: 'payment', locals: { payment: @payment, client: @client } %>");
+
+$('#new_payment').bootstrapValidator('resetForm', true);
+$('#new_payment').find('textarea').val('');
+
+$('#new_payment_modal').modal('hide');
+$('#payment_<%= @payment.id %>').hide().fadeIn("slow");
+
+displayAlert("El pago ha sido creado");

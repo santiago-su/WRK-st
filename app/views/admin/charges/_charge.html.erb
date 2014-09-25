@@ -1,7 +1,8 @@
 <tr id="charge_<%= charge.id %>">
   <td><%= charge.date %></td>
   <td><%= charge.concept %></td>
-  <td class="quantity"><%= charge.quantity %></td>
+  <td class="charge_quantity"><%= charge.quantity %></td>
+  <td></td>
   <td>
     <%= link_to "#edit_charge_modal_#{charge.id}", 'data-toggle' => 'modal', class: "btn btn-default btn-xs" do %>
       <span class="glyphicon glyphicon-pencil"></span> Editar

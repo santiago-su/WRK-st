@@ -1,0 +1,33 @@
+<%= form_for([:admin, client, payment], remote: true, html: {role: :form, 'data-model' => 'payment'}) do |f| %>
+
+
+<div class="form-group">
+  <%= f.label :concept, "Concepto" %>
+  <%= f.text_field :concept, class: "form-control",
+      data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
+</div>
+
+
+<div class="form-group">
+  <%= f.label :quantity, "Cantidad" %>
+  <%= f.number_field :quantity, class: "form-control", min: 0,
+      data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
+</div>
+
+<div class="form-group">
+  <%= f.label :date, "Fecha" %>
+  <%= f.date_field :date, value: Time.now.strftime('%Y-%m-%d'), class: "form-control",
+      data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
+</div>
+
+<div class="form-group">
+  <%= f.label :notes, "Notas" %>
+  <%= f.text_area :notes, class: "form-control" %>
+</div>
+
+
+  <div class="actions">
+    <button type="submit" class="btn btn-default" id="payment_modal_success">
+      <span class="glyphicon glyphicon-ok"></span> Guardar
+  </div>
+<% end %>
