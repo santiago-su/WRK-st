@@ -6,4 +6,7 @@ $('#new_client').find('textarea').val('');
 $('#new_client').find('#client_entry_date').val("<%= Time.now.strftime('%Y-%m-%d') %>");
 $('#new_client_modal').modal('hide');
 
+sortTable("#clients_table", "name");
+$('#client_<%= @client.id %>').hide().fadeIn("slow");
+
 displayAlert("El cliente ha sido creado");
