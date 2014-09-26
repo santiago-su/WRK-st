@@ -41,7 +41,9 @@ before_action :authenticate_admin!
   def destroy
     @transaction = Transaction.find(params[:id])
     @transaction.destroy
-    redirect_to admin_transactions_path, notice: "Transacción eliminada"
+    respond_to do |format|
+      format.js
+    end
   end
 
 

@@ -1,18 +1,17 @@
 <tr id="transaction_<%= transaction.id %>" data-date="<%= transaction.date.strftime("%Y%m%d") %>">
-<td><%= l transaction.date.to_date, format: :long %></td>
-<td><%= transaction.concept %></td>
+<td><%= l transaction.date.to_date, format: :short %></td>
+<td class="concept"><%= transaction.concept %></td>
 <% if transaction.type_of_transaction == "1" %>
-  <td><%= number_to_currency(transaction.amount) %></td>
+  <td class="ingreso"><%= number_to_currency(transaction.amount) %></td>
 <% else %>
-  <td>-<%= number_to_currency(transaction.amount) %></td>
+  <td class="egreso">-<%= number_to_currency(transaction.amount) %></td>
 <% end %>
-<td><%= transaction.commentary %></td>
 <td>
   <%= link_to "#edit_transaction_modal_#{transaction.id}", 'data-toggle' => 'modal', class: "btn btn-default btn-xs" do %>
     <span class="glyphicon glyphicon-pencil"></span> Editar
   <% end %>
 
-  <%= link_to admin_transaction_path(transaction), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } do %>
+  <%= link_to admin_transaction_path(transaction), method: :delete, remote: true, class: "btn btn-danger btn-xs", data: { confirm: "Estas seguro?" } do %>
     <span class="glyphicon glyphicon-trash"></span> Eliminar
   <% end %>
   <div class="modal fade" id="edit_transaction_modal_<%= transaction.id %>" tabindex="-1" role="dialog"

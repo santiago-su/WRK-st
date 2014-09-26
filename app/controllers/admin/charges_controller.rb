@@ -35,8 +35,11 @@ class Admin::ChargesController < ApplicationController
   end
 
   def destroy
-    @client.charges.find(params[:id]).destroy
-    redirect_to admin_client_charges_path(@client), notice: "Cargo eliminado"
+    @charge = @client.charges.find(params[:id])
+    @charge.destroy
+    respond_to do |format|
+      format.js
+    end
   end
 
   def charge_params

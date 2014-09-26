@@ -38,3 +38,15 @@ window.displayAlert = function(text) {
     append(text).hide().appendTo($("#alerts")).fadeIn();
   setTimeout(function () { alert.fadeOut(); }, 5000);
 }
+
+onLoad(function() {
+  $('form').bootstrapValidator();
+
+  $('form').on('success.form.bv', function(e) {
+    // Called when the form is valid
+    var $form = $(e.target);
+    if ($form.data('remote') && $.rails !== undefined) {
+      e.preventDefault();
+    }
+  });
+});

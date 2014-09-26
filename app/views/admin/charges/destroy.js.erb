@@ -1,0 +1,3 @@
+$('tr#charge_<%= @charge.id %>').fadeOut();
+displayAlert("El cargo ha sido eliminado");
+$('#user-balance').html('<%= j render partial: "sidebar/user_balance", locals: { client: @client } %>');

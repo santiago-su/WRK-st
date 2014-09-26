@@ -22,7 +22,7 @@
     </div>
   </td>
   <td>
-    <%= link_to admin_location_path(location), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: 'Are you sure?' } do %>
+    <%= link_to admin_location_path(location), method: :delete, remote: true, class: "btn btn-danger btn-xs", data: { confirm: 'Estas seguro?' } do %>
     <span class="glyphicon glyphicon-trash"></span> Eliminar
     <% end %>
   </td>

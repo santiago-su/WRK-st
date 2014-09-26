@@ -49,8 +49,10 @@
         <%= yield %>
       </div>
       <div class="col-md-3">
-        <h1>Sidebar</h1>
-        <%= yield :sidebar %>
+        <% if content_for(:sidebar) %>
+          <h1>Sidebar</h1>
+          <%= yield :sidebar %>
+        <% end %>
       </div>
     </div>
   </div>

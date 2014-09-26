@@ -3,6 +3,7 @@ $('#clients_table').append("<%= j render partial: 'row', locals: { client: @clie
 $('#new_client').bootstrapValidator('resetForm', true);
 $('#new_client').find('input').val('');
 $('#new_client').find('textarea').val('');
+$('#new_client').find('#client_entry_date').val("<%= Time.now.strftime('%Y-%m-%d') %>");
 $('#new_client_modal').modal('hide');
 
 displayAlert("El cliente ha sido creado");

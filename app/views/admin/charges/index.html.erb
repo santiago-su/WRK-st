@@ -1,22 +1,31 @@
+<script>
+  $(document).ready(function () {
+    sortTable("#charges_table", "date");
+  });
+</script>
+
+
 <h1>Movimientos del cliente <%= @client.name %>
 <%= link_to '#new_charge_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
   <span class="glyphicon glyphicon-plus"></span> Nuevo Cargo
 <% end %>
+
 <%= link_to '#new_payment_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
   <span class="glyphicon glyphicon-plus"></span> Nuevo Pago
 <% end %>
 </h1>
 
-<table class="table table-hover">
+<table class="table table-hover" id="charges_table">
   <thead>
     <tr>
       <th>Fecha</th>
       <th>Concepto</th>
       <th>Cargo</th>
       <th>Pago</th>
+      <th></th>
     </tr>
   </thead>
-  <tbody id="charges_table">
+  <tbody>
     <%= render partial: "charge", collection: @charges, locals: { client: @client } %>
     <%= render partial: "admin/payments/payment", collection: @payments, locals: { client: @client } %>
   </tbody>
@@ -55,5 +64,7 @@
 </div>
 
 <% content_for :sidebar do %>
-  <h4>El saldo del cliente es:</h4> <h3><%= number_to_currency @client.balance %><h3>
+  <div id="user-balance">
+    <%= render partial: "sidebar/user_balance", locals: { client: @client } %>
+  </div>
 <% end %>

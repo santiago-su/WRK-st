@@ -1,8 +1,10 @@
 $('#transaction_table tbody').append("<%= j render partial: 'row', locals: { transaction: @transaction } %>");
+$('#transaction-balance').html('<%= j render partial: "sidebar/transaction_balance" %>');
 $('#edit_transaction_<%= @transaction.id %>').bootstrapValidator();
 
 $('#transaction__new_transaction').bootstrapValidator('resetForm', true);
 $('#transaction__new_transaction').find('textarea').val('');
+$('#transaction__new_transaction').find('#transaction__transaction_date').val("<%= Time.now.strftime('%Y-%m-%d') %>");
 $('#new_transaction_modal').modal('hide');
 
 sortTable("#transaction_table", "date");

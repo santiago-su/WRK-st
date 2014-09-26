@@ -29,8 +29,11 @@ class Admin::PaymentsController < ApplicationController
   end
 
   def destroy
-    @client.payments.find(params[:id]).destroy
-    redirect_to admin_client_payments_path(@client), notice: "Cargo eliminado"
+    @payment = @client.payments.find(params[:id])
+    @payment.destroy
+    respond_to do |format|
+      format.js
+    end
   end
 
   def payment_params

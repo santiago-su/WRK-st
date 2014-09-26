@@ -20,10 +20,38 @@
 
 
 #charges_table {
+  td {
+    white-space: nowrap;
+    &.concept {
+      width: 100%;
+      white-space: normal;
+    }
+  }
   .charge_quantity {
     color: red;
   }
   .payment_quantity {
     color: green;
+  }
+  .actions {
+    text-align: right;
+  }
+}
+
+#transaction_table {
+  tbody {
+    td {
+      white-space: nowrap;
+      &.concept {
+        width: 100%;
+        white-space: normal;
+      }
+    &.ingreso {
+      color: green;
+      }
+    &.egreso {
+      color: red;
+      }
+    }
   }
 }

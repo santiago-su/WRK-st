@@ -16,7 +16,6 @@
       <th>Fecha</th>
       <th>Concepto</th>
       <th>Cantidad</th>
-      <th>Comentario</th>
     </tr>
   </thead>
   <tbody>
@@ -43,5 +42,7 @@
 </div>
 
 <% content_for :sidebar do %>
-  <h3>Mi saldo es:</h3> <h3><%= number_to_currency(current_admin.balance) %></h3>
+  <div id="transaction-balance">
+    <%= render partial: "sidebar/transaction_balance" %>
+  </div>
 <% end %>

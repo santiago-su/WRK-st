@@ -5,6 +5,6 @@ $('#edit_transaction_modal_<%= @transaction.id %>').on("hidden.bs.modal", functi
     remove();
   $('#edit_transaction_<%= @transaction.id %>').bootstrapValidator();
   sortTable("#transaction_table", "date");
+  $('#transaction-balance').html('<%= j render partial: "sidebar/transaction_balance" %>');
+  displayAlert("El movimiento ha sido actualizado");
 });
-
-displayAlert("El movimiento ha sido actualizado");

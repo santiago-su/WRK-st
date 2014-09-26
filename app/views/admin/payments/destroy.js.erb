@@ -1,0 +1,3 @@
+$('tr#payment_<%= @payment.id %>').fadeOut();
+displayAlert("El pago ha sido eliminado");
+$('#user-balance').html('<%= j render partial: "sidebar/user_balance", locals: { client: @client } %>');

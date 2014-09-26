@@ -43,7 +43,9 @@ class Admin::LocationsController < ApplicationController
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
-    redirect_to admin_locations_path, notice: "Espacio eliminado"
+    respond_to do |format|
+      format.js
+    end
   end
 
 
