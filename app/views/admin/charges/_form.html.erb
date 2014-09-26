@@ -16,7 +16,7 @@
 
 <div class="form-group">
   <%= f.label :date, "Fecha" %>
-  <%= f.date_field :date, value: Time.now.strftime('%Y-%m-%d'), class: "form-control",
+  <%= f.date_field :date, value: charge.date, class: "form-control",
       data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
 </div>
 
