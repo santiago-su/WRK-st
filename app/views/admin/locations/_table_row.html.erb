@@ -2,9 +2,15 @@
   <td><%= location.name %></td>
   <td><%= location.description %></td>
   <td>
-    <%= link_to "#edit_location_modal_#{location.id}", 'data-toggle' => 'modal', class: "btn btn-default btn-xs" do %>
-      <span class="glyphicon glyphicon-pencil"></span> Editar
-    <% end %>
+    <div class="actions">
+      <%= link_to "#edit_location_modal_#{location.id}", 'data-toggle' => 'modal', class: "btn btn-default btn-xs" do %>
+        <span class="glyphicon glyphicon-pencil"></span> Editar
+      <% end %>
+      <%= link_to admin_location_path(location), method: :delete, remote: true, class: "btn btn-danger btn-xs", data: { confirm: 'Estas seguro?' } do %>
+        <span class="glyphicon glyphicon-trash"></span> Eliminar
+      <% end %>
+    </div>
+
     <div class="modal fade" id="edit_location_modal_<%= location.id %>" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -20,10 +26,5 @@
         </div>
       </div>
     </div>
-  </td>
-  <td>
-    <%= link_to admin_location_path(location), method: :delete, remote: true, class: "btn btn-danger btn-xs", data: { confirm: 'Estas seguro?' } do %>
-    <span class="glyphicon glyphicon-trash"></span> Eliminar
-    <% end %>
   </td>
 </tr>

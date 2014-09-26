@@ -15,9 +15,12 @@
  *= require_self
  */
 
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
+td .actions {
+  text-align: right;
+}
 
 #charges_table {
   td {
@@ -32,9 +35,6 @@
   }
   .payment_quantity {
     color: green;
-  }
-  .actions {
-    text-align: right;
   }
 }
 

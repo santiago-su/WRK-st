@@ -1,23 +1,13 @@
 <tr>
   <td><%= client.name %></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
   <td>
-    <%= link_to admin_client_charges_path(client), class: "btn btn-default btn-xs" do %>
-      <span class="glyphicon glyphicon-usd"></span>  Movimientos
-    <% end %>
-  </td>
-  <td>
-  <%= link_to admin_client_path(client), class: "btn btn-default btn-xs" do %>
-    <span class="glyphicon glyphicon-search"></span>  Detalles
-  <% end %>
+    <div class="actions">
+      <%= link_to admin_client_charges_path(client), class: "btn btn-default btn-xs" do %>
+        <span class="glyphicon glyphicon-usd"></span>  Movimientos
+      <% end %>
+      <%= link_to admin_client_path(client), class: "btn btn-default btn-xs" do %>
+        <span class="glyphicon glyphicon-search"></span>  Detalles
+      <% end %>
+    </div>
   </td>
 </tr>

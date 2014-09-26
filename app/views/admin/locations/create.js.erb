@@ -1,4 +1,4 @@
-$('#location_table').append("<%= j (render partial: 'table_row', locals: {location: @location }) %>");
+$('#location_table tbody').append("<%= j (render partial: 'table_row', locals: {location: @location }) %>");
 $('#edit_location_<%= @location.id %>').bootstrapValidator();
 
 $('#new_location').bootstrapValidator('resetForm', true);
