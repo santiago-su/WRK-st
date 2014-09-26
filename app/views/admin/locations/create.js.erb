@@ -4,4 +4,5 @@ $('#edit_location_<%= @location.id %>').bootstrapValidator();
 $('#new_location').bootstrapValidator('resetForm', true);
 $('#new_location_modal').modal('hide');
 
+sortTable("#location_table", "name");
 displayAlert("El espacio ha sido creado");
