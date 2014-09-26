@@ -1,4 +1,4 @@
-class Admin::ChargesController < ApplicationController
+class Admin::ChargesController < Admin::AdminController
   before_filter :get_client
 
   def get_client

@@ -1,4 +1,4 @@
-class Admin::ClientsController < ApplicationController
+class Admin::ClientsController < Admin::AdminController
 
   def index
     @clients = Client.all.sort_by(&:entry_date).reverse

@@ -1,4 +1,4 @@
-class Admin::PaymentsController < ApplicationController
+class Admin::PaymentsController < Admin::AdminController
   before_filter :get_client
 
   def get_client

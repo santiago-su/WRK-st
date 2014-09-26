@@ -1,5 +1,4 @@
-class Admin::TransactionsController < ApplicationController
-before_action :authenticate_admin!
+class Admin::TransactionsController < Admin::AdminController
 
   def index
     @transactions = Transaction.order(:date)
