@@ -16,7 +16,7 @@
       <dt>Horas disponibles de Sala de Juntas</dt>
       <dd><%= client.meeting_office_hours %></dd>
       <dt>Fecha de Ingreso</dt>
-      <dd><%= client.entry_date %></dd>
+      <dd><%= l client.entry_date, format: :short %></dd>
     </dl>
 
     <%= link_to "#edit_client_modal", 'data-toggle' => 'modal', class: "btn btn-default btn-xs" do %>
