@@ -11,14 +11,16 @@
   <%= f.text_field :responsible, class: "form-control" %>
 </div>
 
-<div class="form-group">
-  <%= f.label :email, "Correo electrónico" %>
-  <%= f.text_field :email, class: "form-control" %>
-</div>
+<div class="row">
+  <div class="form-group col-xs-6">
+    <%= f.label :email, "Correo electrónico" %>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
 
-<div class="form-group">
-  <%= f.label :phone, "Teléfono" %>
-  <%= f.text_field :phone, class: "form-control" %>
+  <div class="form-group col-xs-6">
+    <%= f.label :phone, "Teléfono" %>
+    <%= f.text_field :phone, class: "form-control" %>
+  </div>
 </div>
 
 <div class="form-group">
@@ -26,16 +28,19 @@
   <%= f.text_area :description, class: "form-control" %>
 </div>
 
-<div class="form-group">
-  <%= f.label :meeting_office_hours, "Horas sala de juntas" %>
-  <%= f.number_field :meeting_office_hours, class: "form-control", min: 0,
-      data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
-</div>
 
-<div class="form-group">
-  <%= f.label :entry_date, "Fecha de ingreso" %>
-  <%= f.date_field :entry_date, value: Time.now.strftime('%Y-%m-%d'), class: "form-control",
-      data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
+<div class="row">
+  <div class="form-group col-xs-6">
+    <%= f.label :meeting_office_hours, "Horas sala de juntas" %>
+    <%= f.number_field :meeting_office_hours, class: "form-control", min: 0,
+        data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
+  </div>
+
+  <div class="form-group col-xs-6">
+    <%= f.label :entry_date, "Fecha de ingreso" %>
+    <%= f.date_field :entry_date, value: Time.now.strftime('%Y-%m-%d'), class: "form-control",
+        data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
+  </div>
 </div>
 
 
