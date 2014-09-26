@@ -9,13 +9,15 @@
 
 
 <h1>Movimientos del cliente <%= @client.name %>
-<%= link_to '#new_charge_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
-  <span class="glyphicon glyphicon-plus"></span> Nuevo Cargo
-<% end %>
+  <span style="white-space:nowrap;">
+    <%= link_to '#new_charge_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
+      <span class="glyphicon glyphicon-plus"></span> Nuevo Cargo
+    <% end %>
 
-<%= link_to '#new_payment_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
-  <span class="glyphicon glyphicon-plus"></span> Nuevo Pago
-<% end %>
+    <%= link_to '#new_payment_modal', 'data-toggle' => 'modal', class: "btn btn-primary" do %>
+      <span class="glyphicon glyphicon-plus"></span> Nuevo Pago
+    <% end %>
+  </span>
 </h1>
 
 <table class="table table-hover" id="charges_table">

@@ -27,7 +27,9 @@ window.onLoad = function(callback) {
 window.sortTable = function(table, dataKey) {
   var rows = $(table).find("tbody tr");
   var sorted = rows.sort(function(a, b) {
-    return $(a).data(dataKey) - $(b).data(dataKey);
+    var a = "" + $(a).data(dataKey),
+        b = "" + $(b).data(dataKey);
+    return a.localeCompare(b);
   });
   $(table).find("tbody").html(sorted);
 }

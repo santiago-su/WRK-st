@@ -3,7 +3,8 @@ $('#edit_location_modal_<%= @location.id %>').on("hidden.bs.modal", function () 
   $('tr#location_<%= @location.id %>').
     after("<%= j (render partial: 'table_row', locals: {location: @location }) %>").
     remove();
-    $('#edit_location_<%= @location.id %>').bootstrapValidator();
+  $('#edit_location_<%= @location.id %>').bootstrapValidator();
+  sortTable("#location_table", "name");
 });
 
 displayAlert("El espacio ha sido actualizado");

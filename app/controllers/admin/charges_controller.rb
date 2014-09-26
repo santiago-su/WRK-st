@@ -6,9 +6,9 @@ class Admin::ChargesController < Admin::AdminController
   end
 
   def index
-    @charge = Charge.new
+    @charge = Charge.new date: Time.zone.now
     @charges = @client.charges
-    @payment = Payment.new
+    @payment = Payment.new date: Time.zone.now
     @payments = @client.payments
   end
 

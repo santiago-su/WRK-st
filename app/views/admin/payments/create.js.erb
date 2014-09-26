@@ -3,6 +3,7 @@ $('#user-balance').html('<%= j render partial: "sidebar/user_balance", locals: {
 
 $('#new_payment').bootstrapValidator('resetForm', true);
 $('#new_payment').find('textarea').val('');
+$('#new_payment').find('#payment_date').val("<%= Time.now.strftime('%Y-%m-%d') %>");
 
 $('#new_payment_modal').modal('hide');
 $('#payment_<%= @payment.id %>').hide().fadeIn("slow");
