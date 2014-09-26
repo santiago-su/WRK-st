@@ -1,7 +1,7 @@
 class CreateTransactions < ActiveRecord::Migration
   def change
     create_table :transactions do |t|
-      t.integer :amount
+      t.decimal :amount, precision: 14, scale: 2
       t.string :type_of_transaction
       t.string :concept
       t.string :commentary

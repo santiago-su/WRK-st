@@ -37,12 +37,14 @@ ActiveRecord::Schema.define(version: 20140925225115) do
   create_table "charges", force: true do |t|
     t.date     "date"
     t.integer  "client_id"
-    t.integer  "quantity"
+    t.decimal  "quantity",   precision: 14, scale: 2
     t.string   "concept"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "charges", ["client_id"], name: "index_charges_on_client_id", using: :btree
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -57,6 +59,8 @@ ActiveRecord::Schema.define(version: 20140925225115) do
     t.datetime "updated_at"
   end
 
+  add_index "clients", ["location_id"], name: "index_clients_on_location_id", using: :btree
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -65,9 +69,11 @@ ActiveRecord::Schema.define(version: 20140925225115) do
     t.datetime "updated_at"
   end
 
+  add_index "locations", ["client_id"], name: "index_locations_on_client_id", using: :btree
+
   create_table "payments", force: true do |t|
     t.date     "date"
-    t.decimal  "quantity",   precision: 10, scale: 2
+    t.decimal  "quantity",   precision: 14, scale: 2
     t.integer  "client_id"
     t.string   "concept"
     t.text     "notes"
@@ -75,8 +81,10 @@ ActiveRecord::Schema.define(version: 20140925225115) do
     t.datetime "updated_at"
   end
 
+  add_index "payments", ["client_id"], name: "index_payments_on_client_id", using: :btree
+
   create_table "transactions", force: true do |t|
-    t.integer  "amount"
+    t.decimal  "amount",              precision: 14, scale: 2
     t.string   "type_of_transaction"
     t.string   "concept"
     t.string   "commentary"

@@ -11,5 +11,6 @@ class CreateClients < ActiveRecord::Migration
       t.integer :location_id
       t.timestamps
     end
+    add_index :clients, :location_id
   end
 end

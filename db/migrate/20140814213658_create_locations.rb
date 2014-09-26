@@ -6,5 +6,6 @@ class CreateLocations < ActiveRecord::Migration
       t.integer "client_id"
       t.timestamps
     end
+    add_index :locations, :client_id
   end
 end
