@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20140925225115) do
     t.string   "description"
     t.string   "phone"
     t.integer  "meeting_office_hours"
-    t.string   "entry_date"
+    t.date     "entry_date"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"

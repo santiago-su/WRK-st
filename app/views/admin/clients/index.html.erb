@@ -27,9 +27,8 @@
         <h4 class="modal-title" id="myModalLabel">Nuevo cliente</h4>
       </div>
       <div class="modal-body">
-        <%= render 'form', client: @client %>
+        <%= render partial: 'form', locals: { client: @client } %>
       </div>
-
     </div>
   </div>
 </div>

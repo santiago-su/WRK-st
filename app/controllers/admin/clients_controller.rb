@@ -2,7 +2,7 @@ class Admin::ClientsController < ApplicationController
 
   def index
     @clients = Client.all.sort_by(&:entry_date).reverse
-    @client = Client.new
+    @client = Client.new entry_date: Time.zone.now
   end
 
   def new

@@ -1,4 +1,4 @@
-<%= form_for([:admin, @client], remote: true, html: {role: :form, 'data-model' => 'client'}) do |f| %>
+<%= form_for([:admin, client], remote: true, html: {role: :form, 'data-model' => 'client'}) do |f| %>
 
 <div class="form-group">
   <%= f.label :name, "Nombre" %>
@@ -38,7 +38,7 @@
 
   <div class="form-group col-xs-6">
     <%= f.label :entry_date, "Fecha de ingreso" %>
-    <%= f.date_field :entry_date, value: Time.now.strftime('%Y-%m-%d'), class: "form-control",
+    <%= f.date_field :entry_date, value: client.entry_date, class: "form-control",
         data: { 'bv-notempty' => true, 'bv-notempty-message' => 'No puede estar vacío' } %>
   </div>
 </div>
