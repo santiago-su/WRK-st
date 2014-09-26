@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20140925225115) do
     t.decimal  "amount",              precision: 14, scale: 2
     t.string   "type_of_transaction"
     t.string   "concept"
-    t.string   "commentary"
+    t.text     "notes"
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"

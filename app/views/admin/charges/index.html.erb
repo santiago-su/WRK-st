@@ -1,6 +1,9 @@
 <script>
   $(document).ready(function () {
     sortTable("#charges_table", "date");
+    $('.charges_popover, .payments_popover').popover( {
+      trigger: 'hover'
+    });
   });
 </script>
 

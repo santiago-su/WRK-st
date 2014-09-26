@@ -12,6 +12,13 @@
       <%= link_to admin_client_charge_path(client, charge), method: :delete, remote: true, class: "btn btn-danger btn-xs", data: { confirm: "Estas seguro?" } do %>
         <span class="glyphicon glyphicon-trash"></span>  Eliminar
       <% end %>
+      
+      <% unless charge.notes.empty? %>
+        <span data-toggle="popover" class="charges_popover" data-container="body"
+        data-placement="right" data-content="<%= charge.notes %>">
+          <span class="glyphicon glyphicon-comment"></span>
+        </span>
+      <% end %>
     </div>
     <div class="modal fade" id="edit_charge_modal_<%= charge.id %>" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">

@@ -1,6 +1,9 @@
 <script>
   $(document).ready(function () {
     sortTable("#transaction_table", "date");
+    $('.transaction_popover').popover( {
+      trigger: 'hover'
+    });
   });
 </script>
 

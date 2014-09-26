@@ -4,7 +4,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.decimal :amount, precision: 14, scale: 2
       t.string :type_of_transaction
       t.string :concept
-      t.string :commentary
+      t.text :notes
       t.date :date
       t.timestamps
     end

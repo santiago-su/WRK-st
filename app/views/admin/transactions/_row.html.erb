@@ -29,5 +29,11 @@
       </div>
     </div>
   </div>
+  <% unless transaction.notes.empty? %>
+    <span data-toggle="popover" class="transaction_popover" data-container="body"
+    data-placement="right" data-content="<%= transaction.notes %>">
+      <span class="glyphicon glyphicon-comment"></span>
+    </span>
+  <% end %>
 </td>
 </tr>

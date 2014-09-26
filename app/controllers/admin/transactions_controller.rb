@@ -49,7 +49,7 @@ class Admin::TransactionsController < Admin::AdminController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:amount, :type_of_transaction, :concept, :commentary, :date)
+    params.require(:transaction).permit(:amount, :type_of_transaction, :concept, :notes, :date)
   end
 
 end
