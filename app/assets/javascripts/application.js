@@ -42,13 +42,19 @@ window.displayAlert = function(text) {
 }
 
 onLoad(function() {
-  $('form').bootstrapValidator();
 
-  $('form').on('success.form.bv', function(e) {
-    // Called when the form is valid
-    var $form = $(e.target);
-    if ($form.data('remote') && $.rails !== undefined) {
-      e.preventDefault();
-    }
-  });
+  // Por alguna estupida razon hay que poner esta inicialización de
+  // bootstrapValidator en un thread aparte para que funcione.
+  setTimeout(function () {
+    $('form').bootstrapValidator();
+
+    $('form').on('success.form.bv', function(e) {
+      // Called when the form is valid
+      var $form = $(e.target);
+      if ($form.data('remote') && $.rails !== undefined) {
+        e.preventDefault();
+      }
+    });
+  }, 0);
+
 });

@@ -1,9 +1,9 @@
 $('#charges_table tbody').append("<%= j render partial: 'payment', locals: { payment: @payment, client: @client } %>");
 $('#user-balance').html('<%= j render partial: "sidebar/user_balance", locals: { client: @client } %>');
 
-$('#new_payment').bootstrapValidator('resetForm', true);
-$('#new_payment').find('textarea').val('');
-$('#new_payment').find('#payment_date').val("<%= Time.now.strftime('%Y-%m-%d') %>");
+$('#payment__new_payment').bootstrapValidator('resetForm', true);
+$('#payment__new_payment').find('textarea').val('');
+$('#payment__new_payment').find('#payment__payment_date').val("<%= Time.now.strftime('%Y-%m-%d') %>");
 
 $('#new_payment_modal').modal('hide');
 $('#payment_<%= @payment.id %>').hide().fadeIn("slow");

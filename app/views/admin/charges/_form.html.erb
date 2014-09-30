@@ -1,4 +1,4 @@
-<%= form_for([:admin, client, charge], remote: true, html: {role: :form, 'data-model' => 'charge'}) do |f| %>
+<%= form_for([:admin, client, charge], remote: true, html: {role: :form, 'data-model' => 'charge'}, namespace: "charge_#{charge.id}") do |f| %>
 
 
 <div class="form-group">

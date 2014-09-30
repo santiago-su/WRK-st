@@ -1,9 +1,9 @@
 $('#charges_table tbody').append("<%= j render partial: 'charge', locals: { charge: @charge, client: @client } %>");
 $('#user-balance').html('<%= j render partial: "sidebar/user_balance", locals: { client: @client } %>');
 
-$('#new_charge').bootstrapValidator('resetForm', true);
-$('#new_charge').find('textarea').val('');
-$('#new_charge').find('#charge_date').val("<%= Time.now.strftime('%Y-%m-%d') %>");
+$('#charge__new_charge').bootstrapValidator('resetForm', true);
+$('#charge__new_charge').find('textarea').val('');
+$('#charge__new_charge').find('#charge__charge_date').val("<%= Time.now.strftime('%Y-%m-%d') %>");
 
 $('#new_charge_modal').modal('hide');
 $('#charge_<%= @charge.id %>').hide().fadeIn("slow");

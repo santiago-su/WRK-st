@@ -3,7 +3,11 @@ $('#edit_payment_modal_<%= @payment.id %>').on("hidden.bs.modal", function () {
   $('tr#payment_<%= @payment.id %>').
     after("<%= j (render partial: 'payment', locals: { payment: @payment, client: @client }) %>").
     remove();
-  $('#edit_payment_<%= @payment.id %>').bootstrapValidator();
+
+  setTimeout(function () {
+    $('#payment_<%= @payment.id %>_edit_payment_<%= @payment.id %>').bootstrapValidator();
+  });
+
   displayAlert("El pago ha sido actualizado");
   sortTable("#charges_table", "date");
   $('.charges_popover, .payments_popover').popover( {
