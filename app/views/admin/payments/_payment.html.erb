@@ -4,6 +4,14 @@
   <td></td>
   <td class="payment_quantity"><%= number_to_currency payment.quantity %></td>
   <td>
+    <% unless payment.notes.empty? %>
+      <span data-toggle="popover" class="payments_popover" data-container="body"
+      data-placement="right" data-content="<%= payment.notes %>">
+        <span class="glyphicon glyphicon-comment"></span>
+      </span>
+    <% end %>
+  </td>
+  <td>
     <div class="actions">
       <%= link_to "#edit_payment_modal_#{payment.id}", 'data-toggle' => 'modal', class: "btn btn-default btn-xs" do %>
         <span class="glyphicon glyphicon-pencil"></span> Editar
@@ -11,12 +19,6 @@
 
       <%= link_to admin_client_payment_path(client, payment), method: :delete, remote: true, class: "btn btn-danger btn-xs", data: { confirm: "Estas seguro?" } do %>
         <span class="glyphicon glyphicon-trash"></span>  Eliminar
-      <% end %>
-      <% unless payment.notes.empty? %>
-        <span data-toggle="popover" class="payments_popover" data-container="body"
-        data-placement="right" data-content="<%= payment.notes %>">
-          <span class="glyphicon glyphicon-comment"></span>
-        </span>
       <% end %>
     </div>
     <div class="modal fade" id="edit_payment_modal_<%= payment.id %>" tabindex="-1" role="dialog"

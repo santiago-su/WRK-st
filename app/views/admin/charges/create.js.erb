@@ -11,3 +11,6 @@ $('#charge_<%= @charge.id %>').hide().fadeIn("slow");
 displayAlert("El cargo ha sido creado");
 
 sortTable("#charges_table", "date");
+$('.charges_popover, .payments_popover').popover( {
+  trigger: 'hover'
+});

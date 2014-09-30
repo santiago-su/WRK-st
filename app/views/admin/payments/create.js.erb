@@ -11,3 +11,6 @@ $('#payment_<%= @payment.id %>').hide().fadeIn("slow");
 displayAlert("El pago ha sido creado");
 
 sortTable("#charges_table", "date");
+$('.charges_popover, .payments_popover').popover( {
+  trigger: 'hover'
+});

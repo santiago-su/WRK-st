@@ -6,5 +6,8 @@ $('#edit_charge_modal_<%= @charge.id %>').on("hidden.bs.modal", function () {
   $('#edit_charge_<%= @charge.id %>').bootstrapValidator();
   displayAlert("El cargo ha sido actualizado");
   sortTable("#charges_table", "date");
+  $('.charges_popover, .payments_popover').popover( {
+    trigger: 'hover'
+  });
   $('#user-balance').html('<%= j render partial: "sidebar/user_balance", locals: { client: @client } %>');
 });

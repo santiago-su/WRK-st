@@ -6,5 +6,8 @@ $('#edit_payment_modal_<%= @payment.id %>').on("hidden.bs.modal", function () {
   $('#edit_payment_<%= @payment.id %>').bootstrapValidator();
   displayAlert("El pago ha sido actualizado");
   sortTable("#charges_table", "date");
+  $('.charges_popover, .payments_popover').popover( {
+    trigger: 'hover'
+  });
   $('#user-balance').html('<%= j render partial: "sidebar/user_balance", locals: { client: @client } %>');
 });
