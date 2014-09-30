@@ -1,0 +1,10 @@
+$('#edit_service_modal_<%= @service.id %>').modal('hide');
+$('#edit_service_modal_<%= @service.id %>').on("hidden.bs.modal", function () {
+  $('tr#service_<%= @service.id %>').
+    after("<%= j (render partial: 'table_row', locals: {service: @service }) %>").
+    remove();
+  $('#edit_service_<%= @service.id %>').bootstrapValidator();
+  sortTable("#service_table", "name");
+});
+
+displayAlert("El servicio ha sido actualizado");

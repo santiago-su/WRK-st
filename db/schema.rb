@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925225115) do
+ActiveRecord::Schema.define(version: 20140930210834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,16 +61,6 @@ ActiveRecord::Schema.define(version: 20140925225115) do
 
   add_index "clients", ["location_id"], name: "index_clients_on_location_id", using: :btree
 
-  create_table "locations", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.integer  "client_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "locations", ["client_id"], name: "index_locations_on_client_id", using: :btree
-
   create_table "payments", force: true do |t|
     t.date     "date"
     t.decimal  "quantity",   precision: 14, scale: 2
@@ -82,6 +72,17 @@ ActiveRecord::Schema.define(version: 20140925225115) do
   end
 
   add_index "payments", ["client_id"], name: "index_payments_on_client_id", using: :btree
+
+  create_table "services", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "client_id"
+    t.decimal  "amount",      precision: 14, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "services", ["client_id"], name: "index_services_on_client_id", using: :btree
 
   create_table "transactions", force: true do |t|
     t.decimal  "amount",              precision: 14, scale: 2

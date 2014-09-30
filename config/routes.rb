@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
 
   namespace :admin do
-    resources :locations
+    resources :services
     resources :transactions
     resources :clients do
       resources :charges

@@ -25,7 +25,7 @@
               <% if current_admin %>
                 <li><%= link_to "Clientes", admin_clients_path %></li>
                 <li><%= link_to "Ingresos y egresos", admin_transactions_path %></li>
-                <li><%= link_to "Espacios", admin_locations_path %></li>
+                <li><%= link_to "Espacios", admin_services_path %></li>
                 <li><%= link_to "Cambiar contraseña", edit_admin_registration_path %></li>
                 <li><%= link_to "Logout", destroy_admin_session_path, method: :delete %></li>
               <% else %>
