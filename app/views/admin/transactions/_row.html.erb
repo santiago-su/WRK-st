@@ -7,6 +7,14 @@
   <td class="egreso">-<%= number_to_currency(transaction.amount) %></td>
 <% end %>
 <td>
+  <% unless transaction.notes.empty? %>
+    <span data-toggle="popover" class="transaction_popover" data-container="body"
+    data-placement="right" data-content="<%= transaction.notes %>">
+      <span class="glyphicon glyphicon-comment"></span>
+    </span>
+  <% end %>
+</td>
+<td>
   <%= link_to "#edit_transaction_modal_#{transaction.id}", 'data-toggle' => 'modal', class: "btn btn-default btn-xs" do %>
     <span class="glyphicon glyphicon-pencil"></span> Editar
   <% end %>
@@ -29,11 +37,5 @@
       </div>
     </div>
   </div>
-  <% unless transaction.notes.empty? %>
-    <span data-toggle="popover" class="transaction_popover" data-container="body"
-    data-placement="right" data-content="<%= transaction.notes %>">
-      <span class="glyphicon glyphicon-comment"></span>
-    </span>
-  <% end %>
 </td>
 </tr>
