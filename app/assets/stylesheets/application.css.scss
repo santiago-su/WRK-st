@@ -18,6 +18,26 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+.navbar-inverse {
+  background-color: #00857B;
+  .navbar-brand {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .navbar-nav > li > a {
+    color: #ffffff;
+  }
+}
+
+.navbar {
+  border: none;
+  border-radius: 0;
+}
+
+
+
 td .actions {
   text-align: right;
 }
