@@ -1,2 +1,3 @@
 $('tr#transaction_<%= @transaction.id %>').fadeOut();
+$('#transaction-balance').html('<%= j render partial: "sidebar/transaction_balance" %>');
 displayAlert("El movimiento ha sido eliminado");
