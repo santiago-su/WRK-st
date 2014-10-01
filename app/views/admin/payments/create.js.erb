@@ -14,3 +14,7 @@ sortTable("#charges_table", "date");
 $('.charges_popover, .payments_popover').popover( {
   trigger: 'hover'
 });
+
+setTimeout(function () {
+  $('#payment_<%= @payment.id %>_edit_payment_<%= @payment.id %>').bootstrapValidator();
+}, 1);

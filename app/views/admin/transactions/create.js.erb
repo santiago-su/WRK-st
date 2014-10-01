@@ -1,6 +1,8 @@
 $('#transaction_table tbody').append("<%= j render partial: 'row', locals: { transaction: @transaction } %>");
 $('#transaction-balance').html('<%= j render partial: "sidebar/transaction_balance" %>');
-$('#edit_transaction_<%= @transaction.id %>').bootstrapValidator();
+setTimeout(function () {
+  $('#transaction_<%= @transaction.id %>_edit_transaction_<%= @transaction.id %>').bootstrapValidator();
+}, 1);
 
 $('#transaction__new_transaction').bootstrapValidator('resetForm', true);
 $('#transaction__new_transaction').find('textarea').val('');
