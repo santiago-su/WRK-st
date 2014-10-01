@@ -1,8 +1,11 @@
 $('#service_table tbody').append("<%= j (render partial: 'table_row', locals: {service: @service }) %>");
-$('#edit_service_<%= @service.id %>').bootstrapValidator();
 
-$('#new_service').bootstrapValidator('resetForm', true);
+$('#service__new_service').bootstrapValidator('resetForm', true);
 $('#new_service_modal').modal('hide');
 
 sortTable("#service_table", "name");
 displayAlert("El servicio ha sido creado");
+
+setTimeout(function () {
+  $('#service_<%= @service.id %>_edit_service_<%= @service.id %>').bootstrapValidator();
+}, 1);
