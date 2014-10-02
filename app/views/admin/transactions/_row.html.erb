@@ -1,6 +1,10 @@
 <tr id="transaction_<%= transaction.id %>" data-date="<%= transaction.date.strftime("%Y%m%d") %>">
 <td><%= l transaction.date.to_date, format: :short %></td>
-<td class="concept"><%= transaction.concept %></td>
+<% if transaction.payment_id? %>
+  <td class="concept"><%= transaction.concept %>(<%= transaction.payment.client.name %>)</td>
+<% else %>
+  <td class="concept"><%= transaction.concept %></td>
+<% end %>
 <% if transaction.type_of_transaction == "1" %>
   <td class="ingreso"><%= number_to_currency(transaction.amount) %></td>
 <% else %>

@@ -9,6 +9,9 @@ class Admin::PaymentsController < Admin::AdminController
   def create
     @payment = @client.payments.new(payment_params)
     if @payment.save
+      if params[:make_transaction] == "yes"
+        @payment.create_transaction!
+      end
       respond_to do |format|
         format.js
       end

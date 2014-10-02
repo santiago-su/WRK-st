@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :clients do
       resources :charges
       resources :payments
+      resources :services, controller: "clients/services"
     end
     root 'admin#index'
   end

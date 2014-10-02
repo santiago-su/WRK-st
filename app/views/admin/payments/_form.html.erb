@@ -32,8 +32,12 @@
 </div>
 
 
-  <div class="actions">
-    <button type="submit" class="btn btn-default" id="payment_modal_success">
+  <div class="form-inline">
+    <button type="submit" class="btn btn-default" id="charge_modal_success">
       <span class="glyphicon glyphicon-ok"></span> Guardar
+    </button>
+    <% if f.object.new_record? %>
+      <%= check_box_tag :make_transaction, "yes", false, class: "checkbox" %> Registrar en ingresos y egresos
+    <% end %>
   </div>
 <% end %>
