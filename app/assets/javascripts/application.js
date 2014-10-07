@@ -58,3 +58,28 @@ onLoad(function() {
   }, 0);
 
 });
+
+
+onLoad(function() {
+  $('select#services').on("change", function(){
+    var optionSelected = $("option:selected", this);
+    var optionSelectedQuantity = $("option:selected", $('select#quantity'));
+    var serviceQuantity = optionSelectedQuantity.data("serviceQuantity")
+    var serviceAmount = optionSelected.data("serviceAmount")
+    var serviceName = optionSelected.data("serviceName")
+    var serviceDescription = optionSelected.data("serviceDescription")
+    $("#charge__charge_concept").val(serviceName);
+    $("#charge__charge_quantity").val(serviceAmount * serviceQuantity);
+    $("#charge__charge_notes").val(serviceDescription);
+  });
+});
+
+onLoad(function() {
+  $('select#quantity').on("change", function(){
+    var optionSelectedQuantity = $("option:selected", this);
+    var optionSelectedAmount = $("option:selected", $('select#services'));
+    var serviceAmount = optionSelectedAmount.data("serviceAmount")
+    var serviceQuantity = optionSelectedQuantity.data("serviceQuantity")
+    $("#charge__charge_quantity").val(serviceQuantity * serviceAmount);
+  });
+});

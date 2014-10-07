@@ -10,6 +10,7 @@ class Admin::ChargesController < Admin::AdminController
     @charges = @client.charges
     @payment = Payment.new date: Time.zone.now
     @payments = @client.payments
+    @services = Service.all
   end
 
   def create

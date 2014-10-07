@@ -41,13 +41,27 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Nuevo cargo</h4>
+        <div class="row">
+          <div class="col-xs-3">
+            <h4 class="modal-title" id="myModalLabel">Nuevo cargo</h4>
+          </div>
+          <div class="col-xs-5">
+            Elige un servicio: <%= select_tag :services, options_for_select(charge_services_data),
+            prompt: "Ninguno", class: "form-control input-sm" %>
+          </div>
+          <div class="col-xs-3">
+            Cantidad: <%= select_tag :quantity,
+            options_for_select((1..10).map { |x| ["#{x}", {'data-service-quantity'=> x }]}),
+            class: "form-control input-sm" %>
+          </div>
+          <div class="col-xs-1">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+        </div>
       </div>
       <div class="modal-body">
         <%= render partial: "form", locals: { client: @client, charge: @charge } %>
       </div>
-
     </div>
   </div>
 </div>
