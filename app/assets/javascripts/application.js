@@ -60,26 +60,27 @@ onLoad(function() {
 });
 
 
-onLoad(function() {
-  $('select#services').on("change", function(){
-    var optionSelected = $("option:selected", this);
-    var optionSelectedQuantity = $("option:selected", $('select#quantity'));
-    var serviceQuantity = optionSelectedQuantity.data("serviceQuantity")
-    var serviceAmount = optionSelected.data("serviceAmount")
-    var serviceName = optionSelected.data("serviceName")
-    var serviceDescription = optionSelected.data("serviceDescription")
+var chargeQuantityAmount = function() {
+  var optionSelectedQuantity = $("option:selected", $('select#quantity'));
+  var optionSelectedService = $("option:selected", $('select#services'));
+  var serviceAmount = optionSelectedService.data("serviceAmount")
+  var serviceQuantity = optionSelectedQuantity.data("serviceQuantity")
+  var serviceName = optionSelectedService.data("serviceName")
+  if (serviceQuantity > 1) {
+    $("#charge__charge_concept").val(serviceName + " x" + serviceQuantity);
+  } else {
     $("#charge__charge_concept").val(serviceName);
-    $("#charge__charge_quantity").val(serviceAmount * serviceQuantity);
-    $("#charge__charge_notes").val(serviceDescription);
-  });
-});
+  }
+  $("#charge__charge_quantity").val(serviceQuantity * serviceAmount);
+}
 
 onLoad(function() {
-  $('select#quantity').on("change", function(){
-    var optionSelectedQuantity = $("option:selected", this);
-    var optionSelectedAmount = $("option:selected", $('select#services'));
-    var serviceAmount = optionSelectedAmount.data("serviceAmount")
-    var serviceQuantity = optionSelectedQuantity.data("serviceQuantity")
-    $("#charge__charge_quantity").val(serviceQuantity * serviceAmount);
+  $('select#services,select#quantity').on("change", function(){
+    var optionSelected = $("option:selected", $('select#services'));
+    if (optionSelected.val() !== "") {
+      var serviceDescription = optionSelected.data("serviceDescription");
+      chargeQuantityAmount();
+      $("#charge__charge_notes").val(serviceDescription);
+    }
   });
 });
