@@ -37,7 +37,8 @@
       <span class="glyphicon glyphicon-ok"></span> Guardar
     </button>
     <% if f.object.new_record? %>
-      <%= check_box_tag :make_transaction, "yes", false, class: "checkbox" %> Registrar en ingresos y egresos
+      <%= check_box_tag :make_transaction, "yes", false, class: "checkbox" %>
+      <%= label_tag :make_transaction, "Registrar en ingresos y egresos", class: "small-label" %>
     <% end %>
   </div>
 <% end %>
