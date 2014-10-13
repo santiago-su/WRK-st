@@ -19,6 +19,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 
-group :development do
+group :development, :test do
   gem 'meta_request'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'factory_girl_rails'
 end
