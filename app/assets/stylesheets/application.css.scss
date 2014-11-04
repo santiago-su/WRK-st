@@ -81,3 +81,25 @@ td .actions {
     }
   }
 }
+
+#clients_table {
+  tbody {
+    td {
+      #pos_balance {
+        text-decoration: none;
+      }
+      #neg_balance {
+        text-decoration: none;
+      }
+      #positive_balance {
+        color: green;
+      }
+      #negative_balance {
+        color: red;
+      }
+    }
+    small {
+      color: darkgray;
+    }
+  }
+}
