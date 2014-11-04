@@ -42,10 +42,11 @@ window.displayAlert = function(text) {
 }
 
 onLoad(function() {
-
   // Por alguna estupida razon hay que poner esta inicialización de
   // bootstrapValidator en un thread aparte para que funcione.
   setTimeout(function () {
+    if (window.rails_env === "test") { return; }
+
     $('form').bootstrapValidator();
 
     $('form').on('success.form.bv', function(e) {

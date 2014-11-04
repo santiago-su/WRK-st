@@ -11,13 +11,11 @@
  * file per style scope.
  *
  *= require bootstrapValidator.min
- *= require_tree .
  *= require_self
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 
 .navbar-inverse {
   background-color: #00857B;

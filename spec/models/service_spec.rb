@@ -1,23 +1,25 @@
 require 'rails_helper'
 
 describe Service do
-  it "should have belong to client" do
-    Service.reflect_on_association(:client)
+
+  before :each do
+    @service = create :service
   end
-  it "should have many charges" do
-    Service.reflect_on_association(:charge)
+
+  it "should belong to client" do
+    @service.should belong_to(:client)
   end
   it "should be invalid without name" do
-    service = Service.new(name: nil)
-    service.should_not be_valid
+    @service.name = nil
+    @service.should_not be_valid
   end
   it "should be invalid without description" do
-    service = Service.new(description: nil)
-    service.should_not be_valid
+    @service.description = nil
+    @service.should_not be_valid
   end
   it "should be invalid without amount" do
-    service = Service.new(amount: nil)
-    service.should_not be_valid
+    @service.amount = nil
+    @service.should_not be_valid
   end
 
 end

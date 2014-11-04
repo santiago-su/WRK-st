@@ -23,4 +23,9 @@ group :development, :test do
   gem 'meta_request'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails'
+  gem "capybara"
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
+  gem 'launchy'
+  gem 'database_cleaner'
 end
