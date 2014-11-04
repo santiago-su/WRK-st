@@ -53,6 +53,14 @@ feature "Admin can manage clients" do
    expect(page).to have_content "Movimientos del cliente #{@client.name}"
  end
 
+ scenario "Admin can see a clients transactions when it clicks the balance" do
+   within("#client_#{@client.id}") do
+     click_link "balance"
+   end
+   current_path.should == "/admin/clients/#{@client.id}/charges"
+   expect(page).to have_content "Movimientos del cliente #{@client.name}"
+ end
+
  scenario "Admin can see a list of existing clients" do
    create :client, name: "Cliente 1"
    visit "/admin/clients"

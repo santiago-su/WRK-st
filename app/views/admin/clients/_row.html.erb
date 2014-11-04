@@ -3,14 +3,14 @@
   <td>
     <div class="actions">
       <% if client.balance >= 0 %>
-        <%= link_to admin_client_charges_path(client), id: "pos_balance" do %>
+        <%= link_to admin_client_charges_path(client), id: "balance" do %>
           <small>Saldo a favor: </small>
           <span id="positive_balance" class="lead">
             <%= number_to_currency client.balance %>
           </span>
         <% end %>
       <% else %>
-        <%= link_to admin_client_charges_path(client), id: "neg_balance" do %>
+        <%= link_to admin_client_charges_path(client), id: "balance" do %>
           <small>Saldo: </small>
           <span id="negative_balance" class="lead">
             <%= number_to_currency client.balance %>
